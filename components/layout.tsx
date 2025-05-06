@@ -9,7 +9,7 @@ export const Layout: React.FC<{ children: ReactNode }> = (props) => {
         <Navbar />
         <div className="w-full">{props.children}</div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

@@ -45,7 +45,7 @@ const WalletContainer = () => {
     else if (chainId === PUB_CHAIN.id) return;
 
     switchChain({ chainId: PUB_CHAIN.id });
-  }, [chainId]);
+  }, [chainId, switchChain]);
 
   return (
     <button

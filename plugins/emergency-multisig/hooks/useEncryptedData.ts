@@ -22,12 +22,12 @@ export function useEncryptedData() {
     const { encrypted: cipherData, symmetricKey } = encryptProposal(strMetadata, hexToUint8Array(actionsBytes));
 
     // Only for those who are on the multisig
-    const filteredSignerItems = pubKeyItems.filter((item) => {
+    const filteredSignerItems = pubKeyItems.filter((item: any) => {
       return signers.includes(item.address);
     });
     const encryptedSymKeys = encryptSymmetricKey(
       symmetricKey,
-      filteredSignerItems.map((item) => hexToUint8Array(item.publicKey))
+      filteredSignerItems.map((item: any) => hexToUint8Array(item.publicKey))
     );
 
     // Hash the raw actions

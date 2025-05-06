@@ -1,5 +1,5 @@
 import { Button, IllustrationHuman } from "@aragon/ods";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export const MissingContentView = ({
   children,
@@ -26,7 +26,7 @@ export const MissingContentView = ({
       <p className="text-md text-neutral-400">{children}</p>
       <Illustration />
       <div className="flex justify-center">
-        <Button size="md" variant="primary" isLoading={!!isLoading} onClick={onClick ? onClick : () => {}}>
+        <Button size="md" variant="primary" isLoading={!!isLoading} onClick={onClick ?? (() => {})}>
           <span>{callToAction}</span>
         </Button>
       </div>
