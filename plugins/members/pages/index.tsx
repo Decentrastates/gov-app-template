@@ -1,5 +1,5 @@
 import { MainSection } from "@/components/layout/main-section";
-import { Button, Heading, Toggle, ToggleGroup } from "@aragon/ods";
+import { Button, Heading, Toggle, ToggleGroup } from "@aragon/gov-ui-kit";
 import { PUB_APP_NAME, PUB_PROJECT_URL } from "@/constants";
 import { useState } from "react";
 import { useAccount } from "wagmi";

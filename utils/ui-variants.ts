@@ -1,4 +1,4 @@
-import { ProposalStatus, TagVariant } from "@aragon/ods";
+import { ProposalStatus, TagVariant } from "@aragon/gov-ui-kit";
 
 export function getTagVariantFromStatus(status: ProposalStatus | undefined): TagVariant {
   switch (status) {
@@ -6,8 +6,8 @@ export function getTagVariantFromStatus(status: ProposalStatus | undefined): Tag
       return "success";
     case ProposalStatus.ACTIVE:
       return "info";
-    case ProposalStatus.CHALLENGED:
-      return "warning";
+    // case ProposalStatus.CHALLENGED:
+    //   return "warning";
     case ProposalStatus.DRAFT:
       return "neutral";
     case ProposalStatus.EXECUTED:
@@ -16,8 +16,8 @@ export function getTagVariantFromStatus(status: ProposalStatus | undefined): Tag
       return "critical";
     case ProposalStatus.FAILED:
       return "critical";
-    case ProposalStatus.PARTIALLY_EXECUTED:
-      return "warning";
+    // case ProposalStatus.PARTIALLY_EXECUTED:
+    //   return "warning";
     case ProposalStatus.PENDING:
       return "neutral";
     case ProposalStatus.REJECTED:

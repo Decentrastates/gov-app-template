@@ -1,4 +1,4 @@
-import { Dialog, type IDialogRootProps } from "@aragon/ods";
+import { Dialog, type IDialogRootProps } from "@aragon/gov-ui-kit";
 import Link from "next/link";
 import { NavLink, type INavLink } from "./navLink";
 
@@ -17,7 +17,7 @@ export const MobileNavDialog: React.FC<IMobileNavDialogProps> = (props) => {
             <NavLink {...navLink} key={navLink.id} onClick={() => dialogRootProps.onOpenChange?.(false)} />
           ))}
         </ul>
-        <div className="flex items-center justify-between px-4">
+        {/* <div className="flex items-center justify-between px-4">
           <div className="flex w-full justify-center">
             <Link
               href="https://aragon.org"
@@ -29,7 +29,7 @@ export const MobileNavDialog: React.FC<IMobileNavDialogProps> = (props) => {
               </span>
             </Link>
           </div>
-        </div>
+        </div> */}
       </Dialog.Content>
     </Dialog.Root>
   );

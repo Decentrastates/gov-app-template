@@ -3,7 +3,7 @@ import { useAccount, useBlockNumber, useReadContract } from "wagmi";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import ProposalCard from "@/plugins/emergency-multisig/components/proposal";
 import { EmergencyMultisigPluginAbi } from "@/plugins/emergency-multisig/artifacts/EmergencyMultisigPlugin";
-import { Button, DataList, IconType, ProposalDataListItemSkeleton, type DataListState } from "@aragon/ods";
+import { Button, DataList, IconType, ProposalDataListItemSkeleton, type DataListState } from "@aragon/gov-ui-kit";
 import { useCanCreateProposal } from "@/plugins/emergency-multisig/hooks/useCanCreateProposal";
 import Link from "next/link";
 import { Else, ElseIf, If, Then } from "@/components/if";

@@ -1,4 +1,12 @@
-import { AvatarIcon, Breadcrumbs, Heading, IBreadcrumbsLink, IconType, ProposalStatus, TagVariant } from "@aragon/ods";
+import {
+  AvatarIcon,
+  Breadcrumbs,
+  Heading,
+  IBreadcrumbsLink,
+  IconType,
+  ProposalStatus,
+  TagVariant,
+} from "@aragon/gov-ui-kit";
 import { MultisigProposal } from "@/plugins/opt-multisig/utils/types";
 import { useProposalStatus } from "@/plugins/opt-multisig/hooks/useProposalVariantStatus";
 import dayjs from "dayjs";

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { EmergencyProposal } from "@/plugins/emergency-multisig/utils/types";
-import { ProposalStatus } from "@aragon/ods";
+import { ProposalStatus } from "@aragon/gov-ui-kit";
 
 export const useProposalVariantStatus = (proposal: EmergencyProposal) => {
   const [status, setStatus] = useState({ variant: "", label: "" });

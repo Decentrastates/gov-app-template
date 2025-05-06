@@ -6,7 +6,7 @@ export const Footer = () => {
     <div className="flex w-full flex-row border-t border-t-neutral-100 bg-neutral-0 p-4 md:p-0 xl:h-20">
       <div className="mx-auto w-full max-w-screen-xl md:flex md:flex-col md:justify-center md:gap-y-6 md:px-6 md:py-10 xl:flex-row xl:gap-x-6 xl:px-6 xl:py-5">
         <div className="flex items-center justify-between pb-4 pt-3 md:order-2 md:justify-center md:gap-x-4 md:pb-0 md:pt-0 xl:order-1 xl:flex-1 xl:justify-start">
-          <div className="flex items-center gap-x-1.5 md:gap-x-2 lg:gap-x-2.5">
+          {/* <div className="flex items-center gap-x-1.5 md:gap-x-2 lg:gap-x-2.5">
             <span className="text-xs leading-tight text-neutral-500 md:text-sm lg:text-base">Governed on</span>
             <Image alt="Aragon logo" width={64} height={16} className="md:hidden" src="/logo-aragon-text.svg" />
             <Image
@@ -17,7 +17,7 @@ export const Footer = () => {
               src="/logo-aragon-text.svg"
             />
             <Image alt="Aragon logo" width={96} height={24} className="hidden lg:block" src="/logo-aragon-text.svg" />
-          </div>
+          </div> */}
         </div>
         <ul className="divide-y divide-neutral-100 md:order-1 md:flex md:items-center md:justify-center md:gap-x-6 md:divide-y-0 xl:justify-start">
           <li className="group py-4 md:py-0">

@@ -1,4 +1,4 @@
-import { Card, DocumentParser, Heading } from "@aragon/ods";
+import { Card, DocumentParser, Heading } from "@aragon/gov-ui-kit";
 import React from "react";
 
 interface IDelegationStatementProps {

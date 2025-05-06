@@ -15,7 +15,15 @@ import { Address, formatEther } from "viem";
 import { useToken } from "../hooks/useToken";
 // import { usePastSupply } from "../hooks/usePastSupply";
 import { ElseIf, If, Then } from "@/components/if";
-import { AlertCard, Button, DialogContent, DialogFooter, DialogHeader, DialogRoot, ProposalStatus } from "@aragon/ods";
+import {
+  AlertCard,
+  Button,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogRoot,
+  ProposalStatus,
+} from "@aragon/gov-ui-kit";
 import { useAccount } from "wagmi";
 import { useTokenVotes } from "@/hooks/useTokenVotes";
 import { ADDRESS_ZERO } from "@/utils/evm";
@@ -195,7 +203,7 @@ export const VoteOptionDialog: React.FC<{ show: boolean; onClose: (voteOption: n
 
   return (
     <DialogRoot open={show} containerClassName="!max-w-[420px]">
-      <DialogHeader title="Select a vote option" onCloseClick={() => dismiss()} onBackClick={() => dismiss()} />
+      <DialogHeader title="Select a vote option" onClose={() => dismiss()} />
       <DialogContent className="flex flex-col gap-y-4 md:gap-y-6">
         <div className="">
           <Button variant="primary" size="lg" onClick={() => onClose(VOTE_YES_VALUE)}>
@@ -232,25 +240,25 @@ const NoVotePowerWarning = ({
 }) => {
   return (
     <AlertCard
-      description={
-        <span className="text-sm">
-          <If true={delegatingToSomeoneElse}>
-            <Then>
-              You are currently delegating your voting power to <AddressText bold={false}>{delegatesTo}</AddressText>.
-              If you wish to participate by yourself in future proposals,
-            </Then>
-            <ElseIf true={delegatedToZero}>
-              You have not self delegated your voting power to participate in the DAO. If you wish to participate in
-              future proposals,
-            </ElseIf>
-          </If>
-          &nbsp;make sure that{" "}
-          <Link href={"/plugins/members/#/delegates/" + address} className="!text-sm text-primary-400 hover:underline">
-            your voting power is self delegated
-          </Link>
-          .
-        </span>
-      }
+      // message={
+      //   <span className="text-sm">
+      //     <If true={delegatingToSomeoneElse}>
+      //       <Then>
+      //         You are currently delegating your voting power to <AddressText bold={false}>{delegatesTo}</AddressText>.
+      //         If you wish to participate by yourself in future proposals,
+      //       </Then>
+      //       <ElseIf true={delegatedToZero}>
+      //         You have not self delegated your voting power to participate in the DAO. If you wish to participate in
+      //         future proposals,
+      //       </ElseIf>
+      //     </If>
+      //     &nbsp;make sure that{" "}
+      //     <Link href={"/plugins/members/#/delegates/" + address} className="!text-sm text-primary-400 hover:underline">
+      //       your voting power is self delegated
+      //     </Link>
+      //     .
+      //   </span>
+      // }
       message={
         delegatingToSomeoneElse
           ? "Your voting power is currently delegated"

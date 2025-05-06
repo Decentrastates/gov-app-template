@@ -1,11 +1,11 @@
 import { PUB_CHAIN } from "@/constants";
 import { formatHexString } from "@/utils/evm";
-import { DataListItem, MemberAvatar, Tag, type IDataListItemProps, type TagVariant } from "@aragon/ods";
+import { DataListItem, MemberAvatar, Tag, type IDataListItemProps, type TagVariant } from "@aragon/gov-ui-kit";
 import classNames from "classnames";
 
 export type IVotesDataListVariant = "yes" | "approve" | "no" | "abstain";
 
-export interface IVotesDataListItemStructureProps extends IDataListItemProps {
+export type IVotesDataListItemStructureProps = IDataListItemProps & {
   address: string;
   variant: IVotesDataListVariant;
   ensAvatar?: string;
@@ -13,7 +13,7 @@ export interface IVotesDataListItemStructureProps extends IDataListItemProps {
   connectedAccount?: boolean;
   delegate?: boolean;
   votingPower?: string;
-}
+};
 
 export const VotesDataListItemStructure: React.FC<IVotesDataListItemStructureProps> = (props) => {
   const { address, connectedAccount, delegate, ensAvatar, ensName, variant, className, votingPower, ...otherProps } =

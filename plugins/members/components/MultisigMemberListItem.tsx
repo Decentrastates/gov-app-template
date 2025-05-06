@@ -1,15 +1,15 @@
 import { Else, If, Then } from "@/components/if";
 import { formatHexString, equalAddresses } from "@/utils/evm";
-import { type IDataListItemProps, DataList, MemberAvatar, Tag } from "@aragon/ods";
+import { type IDataListItemProps, DataList, MemberAvatar, Tag } from "@aragon/gov-ui-kit";
 import { useAccount } from "wagmi";
 import { Address } from "viem";
 
-export interface IMultisigMemberListItemProps extends IDataListItemProps {
+export type IMultisigMemberListItemProps = IDataListItemProps & {
   /** 0x address of the user */
   address: Address;
   /** Direct URL src of the user avatar image to be rendered */
   avatarSrc?: string;
-}
+};
 
 export const MultisigMemberListItem: React.FC<IMultisigMemberListItemProps> = (props) => {
   const { avatarSrc, address, ...otherProps } = props;

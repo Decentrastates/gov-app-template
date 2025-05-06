@@ -1,5 +1,5 @@
 import { MainSection } from "@/components/layout/main-section";
-import { Button, IllustrationHuman } from "@aragon/ods";
+import { Button, IllustrationHuman } from "@aragon/gov-ui-kit";
 import { type ReactNode } from "react";
 import { useAccount } from "wagmi";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
@@ -25,9 +25,9 @@ export default function StandardHome() {
           <div className="flex justify-center">
             <If true={isConnected}>
               <Then>
-                <Button className="mb-2" variant="primary" href="https://devs.aragon.org/" target="_blank">
+                {/* <Button className="mb-2" variant="primary" href="https://devs.aragon.org/" target="_blank">
                   Learn more about OSx
-                </Button>
+                </Button> */}
               </Then>
               <Else>
                 <Button size="md" variant="primary" onClick={() => open()}>

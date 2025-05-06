@@ -16,7 +16,7 @@ import {
   TextArea,
   TextAreaRichText,
   type IDialogRootProps,
-} from "@aragon/ods";
+} from "@aragon/gov-ui-kit";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/router";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
@@ -106,7 +106,7 @@ export const DelegateAnnouncementDialog: React.FC<IDelegateAnnouncementDialogPro
 
   return (
     <DialogRoot {...otherProps} containerClassName="!max-w-[520px]" useFocusTrap={false}>
-      <DialogHeader title="Create your delegate profile" onCloseClick={onClose} onBackClick={onClose} />
+      <DialogHeader title="Create your delegate profile" onClose={onClose} />
       <DialogContent className="flex flex-col gap-y-4 md:gap-y-6">
         <InputText
           label="Identifier"

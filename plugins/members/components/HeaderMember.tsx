@@ -9,7 +9,7 @@ import {
   MemberAvatar,
   clipboardUtils,
   type IBreadcrumbsLink,
-} from "@aragon/ods";
+} from "@aragon/gov-ui-kit";
 import { formatEther, type Address } from "viem";
 import { mainnet } from "viem/chains";
 import { useAccount, useEnsName } from "wagmi";

@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import { Button, IconType, InputText, Tag, TextAreaRichText } from "@aragon/ods";
+import { Button, IconType, InputText, Tag, TextAreaRichText } from "@aragon/gov-ui-kit";
 import { useAccount } from "wagmi";
 import { Else, ElseIf, If, Then } from "@/components/if";
 import { PleaseWaitSpinner } from "@/components/please-wait";

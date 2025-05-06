@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card, ProposalStatus, ProposalDataListItem, IProposalDataListItemStructureProps } from "@aragon/ods";
+import { Card, ProposalStatus, ProposalDataListItem, IProposalDataListItemStructureProps } from "@aragon/gov-ui-kit";
 import { PleaseWaitSpinner } from "@/components/please-wait";
 import { useProposal } from "../../hooks/useProposal";
 import { useProposalStatus } from "../../hooks/useProposalVariantStatus";
@@ -99,7 +99,7 @@ export default function ProposalCard(props: ProposalInputs) {
           ? Number(proposal.parameters.endDate) * 1000
           : undefined
       }
-      result={result}
+      // results={result}
       publisher={{ address: proposal.creator }}
       status={proposalStatus!}
       type={"majorityVoting"}

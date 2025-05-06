@@ -15,7 +15,7 @@ import { Address, formatEther } from "viem";
 import { useToken } from "../hooks/useToken";
 import { usePastSupply } from "../hooks/usePastSupply";
 import { ElseIf, If, Then } from "@/components/if";
-import { AlertCard, ProposalStatus } from "@aragon/ods";
+import { AlertCard, ProposalStatus } from "@aragon/gov-ui-kit";
 import { PUB_TOKEN_SYMBOL } from "@/constants";
 import { useAccount } from "wagmi";
 import { useTokenVotes } from "@/hooks/useTokenVotes";
@@ -167,7 +167,16 @@ const NoVetoPowerWarning = ({
 }) => {
   return (
     <AlertCard
-      description={
+      message={
+        delegatingToSomeoneElse
+          ? "Your voting power is currently delegated"
+          : canVeto
+            ? "You cannot veto on new proposals"
+            : "You cannot veto"
+      }
+      variant="info"
+    >
+      {
         <span className="text-sm">
           <If true={delegatingToSomeoneElse}>
             <Then>
@@ -186,15 +195,7 @@ const NoVetoPowerWarning = ({
           .
         </span>
       }
-      message={
-        delegatingToSomeoneElse
-          ? "Your voting power is currently delegated"
-          : canVeto
-            ? "You cannot veto on new proposals"
-            : "You cannot veto"
-      }
-      variant="info"
-    />
+    </AlertCard>
   );
 };
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useProposalApprove } from "@/plugins/multisig/hooks/useProposalApprove";
-import { Card, ProposalStatus } from "@aragon/ods";
-import { ProposalDataListItem } from "@aragon/ods";
+import { Card, ProposalStatus } from "@aragon/gov-ui-kit";
+import { ProposalDataListItem } from "@aragon/gov-ui-kit";
 import { PleaseWaitSpinner } from "@/components/please-wait";
 import { useProposalStatus } from "../../hooks/useProposalVariantStatus";
 import { useAccount } from "wagmi";
@@ -68,10 +68,10 @@ export default function ProposalCard(props: ProposalInputs) {
           ? Number(proposal.parameters.endDate) * 1000
           : undefined
       }
-      result={{
-        approvalAmount: proposal.approvals,
-        approvalThreshold: proposal.parameters.minApprovals,
-      }}
+      // result={{
+      //   approvalAmount: proposal.approvals,
+      //   approvalThreshold: proposal.parameters.minApprovals,
+      // }}
       publisher={{ address: proposal.creator }}
       status={proposalStatus!}
       type={"approvalThreshold"}

@@ -1,7 +1,7 @@
 import { useAccount, useBlockNumber, useReadContract } from "wagmi";
 import { useEffect } from "react";
 import ProposalCard from "../components/proposal";
-import { AlertCard, DataList, Link, ProposalDataListItemSkeleton, type DataListState } from "@aragon/ods";
+import { AlertCard, DataList, Link, ProposalDataListItemSkeleton, type DataListState } from "@aragon/gov-ui-kit";
 import { Else, ElseIf, If, Then } from "@/components/if";
 import { PUB_DUAL_GOVERNANCE_PLUGIN_ADDRESS, PUB_CHAIN } from "@/constants";
 import { MyOptimisticTokenVotingPluginAbi } from "../artifacts/MyOptimisticTokenVotingPlugin.sol";
@@ -108,7 +108,12 @@ const NoVetoPowerWarning = ({
 }) => {
   return (
     <AlertCard
-      description={
+      message={
+        delegatingToSomeoneElse ? "Your voting power is currently delegated" : "You cannot veto on new proposals"
+      }
+      variant="info"
+    >
+      {
         <span className="text-sm">
           <If true={delegatingToSomeoneElse}>
             <Then>
@@ -127,10 +132,6 @@ const NoVetoPowerWarning = ({
           .
         </span>
       }
-      message={
-        delegatingToSomeoneElse ? "Your voting power is currently delegated" : "You cannot veto on new proposals"
-      }
-      variant="info"
-    />
+    </AlertCard>
   );
 };

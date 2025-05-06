@@ -7,7 +7,7 @@ import {
   PUB_LOCK_TO_VOTE_PLUGIN_ADDRESS,
   PUB_OPT_MULTISIG_PLUGIN_ADDRESS,
 } from "@/constants";
-import { IconType } from "@aragon/ods";
+import { IconType } from "@aragon/gov-ui-kit";
 
 type PluginItem = {
   /** The URL fragment after /plugins */

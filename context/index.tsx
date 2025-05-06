@@ -9,8 +9,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { UseDerivedWalletProvider } from "../hooks/useDerivedWallet";
-import { OdsModulesProvider } from "@aragon/ods";
-import { customModulesCopy, odsCoreProviderValues } from "@/components/ods-customizations";
+import { GukModulesProvider } from "@aragon/gov-ui-kit";
+import { customModulesCopy, coreProviderValues } from "@/components/customizations";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,10 +45,10 @@ createWeb3Modal({
 export function RootContextProvider({ children }: { children: ReactNode }) {
   return (
     <WagmiProvider config={config}>
-      <OdsModulesProvider
+      <GukModulesProvider
         wagmiConfig={config}
         queryClient={queryClient}
-        coreProviderValues={odsCoreProviderValues}
+        coreProviderValues={coreProviderValues}
         values={{ copy: customModulesCopy }}
       >
         <PersistQueryClientProvider client={queryClient} persistOptions={{ persister }}>
@@ -56,7 +56,7 @@ export function RootContextProvider({ children }: { children: ReactNode }) {
             <UseDerivedWalletProvider>{children}</UseDerivedWalletProvider>
           </AlertProvider>
         </PersistQueryClientProvider>
-      </OdsModulesProvider>
+      </GukModulesProvider>
     </WagmiProvider>
   );
 }

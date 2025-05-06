@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { MobileNavDialog } from "./mobileNavDialog";
 import { NavLink, type INavLink } from "./navLink";
-import { AvatarIcon, IconType } from "@aragon/ods";
+import { AvatarIcon, IconType } from "@aragon/gov-ui-kit";
 import { PUB_APP_NAME, PUB_PROJECT_LOGO } from "@/constants";
 
 export const Navbar: React.FC = () => {
@@ -17,7 +17,7 @@ export const Navbar: React.FC = () => {
       id: p.id,
       name: p.title,
       path: `/plugins/${p.id}/#/`,
-      // icon: p.icon,
+      icon: p.icon,
     })),
   ];
 

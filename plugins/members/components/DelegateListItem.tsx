@@ -1,20 +1,20 @@
 import { Else, ElseIf, If, Then } from "@/components/if";
 import { formatHexString, equalAddresses } from "@/utils/evm";
-import { type IDataListItemProps, DataList, MemberAvatar, Tag } from "@aragon/ods";
+import { type IDataListItemProps, DataList, MemberAvatar, Tag } from "@aragon/gov-ui-kit";
 import { useAccount } from "wagmi";
 import { Address, formatEther } from "viem";
 import { useTokenVotes } from "../../../hooks/useTokenVotes";
 import VerifiedDelegates from "../../../verified-delegates.json";
 import { useDelegateAnnounce } from "../hooks/useDelegateAnnounce";
 
-export interface IDelegateListItemProps extends IDataListItemProps {
+export type IDelegateListItemProps = IDataListItemProps & {
   /** Whether the member is a delegate of current user or not */
   isMyDelegate?: boolean;
   /** 0x address of the user */
   address: Address;
   /** Direct URL src of the user avatar image to be rendered */
   avatarSrc?: string;
-}
+};
 
 export const DelegateListItem: React.FC<IDelegateListItemProps> = (props) => {
   const { isMyDelegate, avatarSrc, address, ...otherProps } = props;

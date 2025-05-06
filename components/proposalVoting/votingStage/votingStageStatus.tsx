@@ -1,5 +1,5 @@
 import { ElseIf, If, Then } from "@/components/if";
-import { AvatarIcon, IconType, Spinner, StatePingAnimation } from "@aragon/ods";
+import { AvatarIcon, IconType, Spinner, StatePingAnimation } from "@aragon/gov-ui-kit";
 
 interface IVotingStageStatus {
   endDate: string;

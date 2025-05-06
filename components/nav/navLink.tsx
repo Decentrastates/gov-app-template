@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { type ParsedUrlQuery } from "querystring";
 import { resolveQueryParam } from "@/utils/query";
-import { Icon, type IconType } from "@aragon/ods";
+import { Icon, type IconType } from "@aragon/gov-ui-kit";
 
 export interface INavLink {
   path: string;

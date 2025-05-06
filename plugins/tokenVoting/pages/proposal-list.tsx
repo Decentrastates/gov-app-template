@@ -2,7 +2,7 @@ import { useAccount, useBlockNumber, useReadContract } from "wagmi";
 import { type ReactNode, useEffect } from "react";
 import ProposalCard from "../components/proposal";
 import { TokenVotingAbi } from "../artifacts/TokenVoting.sol";
-import { Button, DataList, IconType, ProposalDataListItemSkeleton, type DataListState } from "@aragon/ods";
+import { Button, DataList, IconType, ProposalDataListItemSkeleton, type DataListState } from "@aragon/gov-ui-kit";
 import { useCanCreateProposal } from "../hooks/useCanCreateProposal";
 import Link from "next/link";
 import { Else, If, Then } from "@/components/if";

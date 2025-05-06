@@ -2,7 +2,7 @@ import { If } from "@/components/if";
 import { PUB_CHAIN } from "@/constants";
 import { formatHexString } from "@/utils/evm";
 import { type IResource } from "@/utils/types";
-import { Card, Heading, IconType, Link } from "@aragon/ods";
+import { Card, Heading, IconType, Link } from "@aragon/gov-ui-kit";
 import React from "react";
 import { type Address } from "viem";
 import { useEnsName } from "wagmi";

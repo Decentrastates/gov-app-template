@@ -1,6 +1,6 @@
 import { PUB_CHAIN } from "@/constants";
 import { getSimpleRelativeTimeFromDate } from "@/utils/dates";
-import { AccordionItem, AccordionItemContent, AccordionItemHeader, Heading, Tabs } from "@aragon/ods";
+import { AccordionItem, AccordionItemContent, AccordionItemHeader, Heading, Tabs } from "@aragon/gov-ui-kit";
 import { Tabs as RadixTabsRoot } from "@radix-ui/react-tabs";
 import dayjs from "dayjs";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";

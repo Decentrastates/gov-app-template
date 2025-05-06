@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DataList, IconType, IllustrationHuman } from "@aragon/ods";
+import { DataList, IconType, IllustrationHuman } from "@aragon/gov-ui-kit";
 import { MultisigMemberListItem } from "./MultisigMemberListItem";
 import { PleaseWaitSpinner } from "@/components/please-wait";
 import { useMultisigMembers } from "../hooks/useMultisigMembers";

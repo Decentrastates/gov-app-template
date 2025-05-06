@@ -2,7 +2,7 @@ import { useAccount, useBlockNumber, useReadContract } from "wagmi";
 import { type ReactNode, useEffect } from "react";
 import ProposalCard from "@/plugins/multisig/components/proposal";
 import { MultisigPluginAbi } from "@/plugins/multisig/artifacts/MultisigPlugin.sol";
-import { Button, DataList, IconType, ProposalDataListItemSkeleton, type DataListState } from "@aragon/ods";
+import { Button, DataList, IconType, ProposalDataListItemSkeleton, type DataListState } from "@aragon/gov-ui-kit";
 import { useCanCreateProposal } from "@/plugins/multisig/hooks/useCanCreateProposal";
 import Link from "next/link";
 import { Else, ElseIf, If, Then } from "@/components/if";

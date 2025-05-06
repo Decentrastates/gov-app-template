@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DataList, IllustrationHuman } from "@aragon/ods";
+import { DataList, IllustrationHuman } from "@aragon/gov-ui-kit";
 import { DelegateListItem } from "./DelegateListItem";
 import { equalAddresses } from "@/utils/evm";
 import { useDelegates } from "../hooks/useDelegates";

@@ -1,4 +1,4 @@
-import { DataList, IconType } from "@aragon/ods";
+import { DataList, IconType } from "@aragon/gov-ui-kit";
 import { isAddressEqual } from "viem";
 import { useAccount } from "wagmi";
 import { VotesDataListItemSkeleton } from "./votesDataListItemSkeleton";

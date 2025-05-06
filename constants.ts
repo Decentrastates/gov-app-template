@@ -41,7 +41,7 @@ export const DETERMINISTIC_EMERGENCY_PAYLOAD =
   "This text is used to generate an encryption key to be used on private proposals targetting the Patito DAO.\n\nSign this message ONLY if you are about to create, approve or execute a emergency proposal using the official app.";
 
 // General
-export const PUB_APP_NAME = "cdDAO";
+export const PUB_APP_NAME = "cd..DAO";
 export const PUB_APP_DESCRIPTION = "Patito DAO's official UI to interact with the DAO smart contract";
 export const PUB_TOKEN_SYMBOL = "PDT";
 

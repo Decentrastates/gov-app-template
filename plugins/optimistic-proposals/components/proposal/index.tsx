@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useProposalVeto } from "@/plugins/optimistic-proposals/hooks/useProposalVeto";
-import { Card, ProposalStatus } from "@aragon/ods";
-import { ProposalDataListItem } from "@aragon/ods";
+import { Card, ProposalStatus } from "@aragon/gov-ui-kit";
+import { ProposalDataListItem } from "@aragon/gov-ui-kit";
 import { PleaseWaitSpinner } from "@/components/please-wait";
 import { useProposalStatus } from "../../hooks/useProposalVariantStatus";
 import { PUB_TOKEN_SYMBOL } from "@/constants";
@@ -81,11 +81,11 @@ export default function ProposalCard(props: ProposalInputs) {
           ? Number(proposal.parameters.vetoEndDate) * 1000
           : undefined
       }
-      result={{
-        option: "Veto",
-        voteAmount: formatEther(proposal.vetoTally) + " " + (tokenSymbol || PUB_TOKEN_SYMBOL),
-        votePercentage: vetoPercentage,
-      }}
+      // result={{
+      //   option: "Veto",
+      //   voteAmount: formatEther(proposal.vetoTally) + " " + (tokenSymbol || PUB_TOKEN_SYMBOL),
+      //   votePercentage: vetoPercentage,
+      // }}
       publisher={{ address: proposal.creator }}
       status={proposalStatus!}
       type={"majorityVoting"}

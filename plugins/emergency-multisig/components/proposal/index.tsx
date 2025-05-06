@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useProposalApprove } from "@/plugins/emergency-multisig/hooks/useProposalApprove";
-import { Card } from "@aragon/ods";
-import { ProposalDataListItem } from "@aragon/ods";
+import { Card } from "@aragon/gov-ui-kit";
+import { ProposalDataListItem } from "@aragon/gov-ui-kit";
 import { PleaseWaitSpinner } from "@/components/please-wait";
 import { useProposalStatus } from "../../hooks/useProposalVariantStatus";
 import { useAccount } from "wagmi";
@@ -73,10 +73,8 @@ export default function ProposalCard(props: ProposalInputs) {
           ? Number(proposal.parameters.expirationDate) * 1000
           : undefined
       }
-      result={{
-        approvalAmount: proposal.approvals,
-        approvalThreshold: proposal.parameters.minApprovals,
-      }}
+      results={proposal.approvals}
+      // threshold={proposal.parameters.minApprovals}
       publisher={{ address: proposal.creator }}
       status={proposalStatus!}
       type={"approvalThreshold"}
