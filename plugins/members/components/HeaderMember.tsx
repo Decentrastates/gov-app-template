@@ -1,5 +1,6 @@
 import { PUB_TOKEN_SYMBOL } from "@/constants";
 import { formatHexString, equalAddresses } from "@/utils/evm";
+import { useTranslation } from "next-i18next";
 import {
   Breadcrumbs,
   Button,
@@ -26,6 +27,7 @@ interface IHeaderMemberProps {
 }
 
 export const HeaderMember: React.FC<IHeaderMemberProps> = (props) => {
+  const { t } = useTranslation("common");
   const { address: delegateAddress, bio, name } = props;
   const breadcrumbs: IBreadcrumbsLink[] = [{ label: "Delegates", href: "#/" }, { label: props.address }];
   const { open } = useWeb3Modal();
@@ -60,7 +62,7 @@ export const HeaderMember: React.FC<IHeaderMemberProps> = (props) => {
                     <span className="text-2xl text-neutral-800">{formatEther(votingPower ?? BigInt(0))}</span>
                     <span className="text-base text-neutral-500">{PUB_TOKEN_SYMBOL}</span>
                   </div>
-                  <span className="text-sm text-neutral-500">Voting power</span>
+                  <span className="text-sm text-neutral-500">{t("members.delegates.profile.voting_power")}</span>
                 </div>
 
                 {/* Token Balance */}
@@ -69,7 +71,7 @@ export const HeaderMember: React.FC<IHeaderMemberProps> = (props) => {
                     <span className="text-2xl text-neutral-800">{formatEther(delegateTokenBalance ?? BigInt(0))}</span>
                     <span className="text-base text-neutral-500">{PUB_TOKEN_SYMBOL}</span>
                   </div>
-                  <span className="text-sm text-neutral-500">Token balance</span>
+                  <span className="text-sm text-neutral-500">{t("members.delegates.profile.token_balance")}</span>
                 </div>
               </div>
             </div>
@@ -81,21 +83,21 @@ export const HeaderMember: React.FC<IHeaderMemberProps> = (props) => {
             <span className="flex w-full flex-col gap-x-4 gap-y-3 md:flex-row">
               <If not={isConnected}>
                 <Then>
-                  <Button onClick={() => open()}>Connect to delegate</Button>
+                  <Button onClick={() => open()}>{t("members.delegates.profile.connect")}</Button>
                 </Then>
                 <ElseIf true={equalAddresses(delegateAddress, delegatesTo)}>
-                  <Button disabled>Already delegated</Button>
+                  <Button disabled>{t("members.delegates.profile.already_delegated")}</Button>
                 </ElseIf>
                 <ElseIf true={equalAddresses(delegateAddress, myAddress)}>
                   <If true={(delegateTokenBalance || BigInt(0)) > BigInt(0)}>
                     <Button isLoading={isConfirming} onClick={delegateVotingPower}>
-                      Reclaim voting power
+                      {t("members.delegates.profile.reclaim")}
                     </Button>
                   </If>
                 </ElseIf>
                 <Else>
                   <Button isLoading={isConfirming} onClick={delegateVotingPower}>
-                    Delegate voting power
+                    {t("members.delegates.profile.delegate")}
                   </Button>
                 </Else>
               </If>

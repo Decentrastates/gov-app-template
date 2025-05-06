@@ -13,13 +13,10 @@ import { useDelegates } from "../hooks/useDelegates";
 import { useDelegateAnnounce } from "../hooks/useDelegateAnnounce";
 import { MultisigMemberList } from "../components/MultisigMemberList";
 import { useMultisigMembers } from "../hooks/useMultisigMembers";
-
-const DELEGATION_DESCRIPTION =
-  "Proposals submitted to the community can be vetoed by token holders. Additionally, token holders can opt to delegate their voting power to delegates.";
-const SECURITY_COUNCIL_DESCRIPTION =
-  "Proposals are created by the Security Council. When its members approve one, the proposal is forwarded to the community veto phase for ratification.";
+import { useTranslation } from "next-i18next";
 
 export default function MembersList() {
+  const { t } = useTranslation("common");
   const { open } = useWeb3Modal();
   const [showProfileCreationDialog, setShowProfileCreationDialog] = useState(false);
   const { address, isConnected } = useAccount();
@@ -41,10 +38,10 @@ export default function MembersList() {
           <div className="flex items-start justify-between">
             <If some={[toggleValue === "all", toggleValue === "verified"]}>
               <Then>
-                <Heading size="h1">Delegates</Heading>
+                <Heading size="h1">{t("members.delegates.title")}</Heading>
               </Then>
               <Else>
-                <Heading size="h1">Security council</Heading>
+                <Heading size="h1">{t("members.security_council.title")}</Heading>
               </Else>
             </If>
 
@@ -54,9 +51,9 @@ export default function MembersList() {
               value={toggleValue}
               className="flex justify-end"
             >
-              <Toggle value="all" label="Registered" className="rounded-lg" />
-              <Toggle value="verified" label="Verified" className="rounded-lg" />
-              <Toggle value="multisig" label="Security council" className="rounded-lg" />
+              <Toggle value="all" label={t("members.filter.registered")} className="rounded-lg" />
+              <Toggle value="verified" label={t("members.filter.verified")} className="rounded-lg" />
+              <Toggle value="multisig" label={t("members.filter.security_council")} className="rounded-lg" />
             </ToggleGroup>
           </div>
           <If some={[toggleValue === "all", toggleValue === "verified"]}>
@@ -70,24 +67,24 @@ export default function MembersList() {
         </div>
         <aside className="flex w-full flex-col gap-y-4 lg:max-w-[280px] lg:gap-y-6">
           <div className="flex flex-col gap-y-3">
-            <Heading size="h3">Details</Heading>
+            <Heading size="h3">{t("members.details.title")}</Heading>
             <If some={[toggleValue === "all", toggleValue === "verified"]}>
               <Then>
-                <p className="text-neutral-500">{DELEGATION_DESCRIPTION}</p>
+                <p className="text-neutral-500">{t("members.details.delegation_description")}</p>
               </Then>
               <Else>
-                <p className="text-neutral-500">{SECURITY_COUNCIL_DESCRIPTION}</p>
+                <p className="text-neutral-500">{t("members.details.security_council_description")}</p>
               </Else>
             </If>
           </div>
           <dl className="divide-y divide-neutral-100">
             <div className="flex flex-col items-baseline gap-y-2 py-3 lg:gap-x-6 lg:py-4">
               <dt className="line-clamp-1 shrink-0 text-lg leading-tight text-neutral-800 lg:line-clamp-6 lg:w-40">
-                About the project
+                {t("members.details.about_project")}
               </dt>
               <dd className="size-full text-base leading-tight text-neutral-500">
                 <a href={PUB_PROJECT_URL} target="_blank" className="font-semibold text-primary-400 underline">
-                  Learn more about {PUB_APP_NAME}
+                  {t("members.details.learn_more", { appName: PUB_APP_NAME })}
                 </a>
               </dd>
             </div>
@@ -95,7 +92,8 @@ export default function MembersList() {
               <Then>
                 <div className="flex flex-col items-baseline gap-y-2 py-3 lg:gap-x-6 lg:py-4">
                   <dt className="line-clamp-1 shrink-0 text-lg leading-tight text-neutral-800 lg:line-clamp-6 lg:w-40">
-                    Token contract
+                    {/* Token contract */}
+                    {t("members.details.token-contract")}
                   </dt>
                   <dd className="size-full text-base leading-tight text-neutral-500">
                     <AddressText>{PUB_TOKEN_ADDRESS}</AddressText>
@@ -103,10 +101,13 @@ export default function MembersList() {
                 </div>
                 <div className="flex flex-col items-baseline gap-y-2 py-3 lg:gap-x-6 lg:py-4">
                   <dt className="line-clamp-1 shrink-0 text-lg leading-tight text-neutral-800 lg:line-clamp-6 lg:w-40">
-                    Delegates
+                    {t("members.details.delegates")}
                   </dt>
                   <dd className="size-full text-base leading-tight text-neutral-500">
-                    {delegateCount === 1 ? "1 delegate" : `${delegateCount} delegates`} registered
+                    {delegateCount === 1
+                      ? `1 ${t("members.details.delegate")}`
+                      : `${delegateCount} ${t("members.details.delegates")}`}{" "}
+                    {t("members.filter.registered")}
                   </dd>
                 </div>
               </Then>
@@ -114,10 +115,13 @@ export default function MembersList() {
                 <If not={isLoadingMultisigMembers}>
                   <div className="flex flex-col items-baseline gap-y-2 py-3 lg:gap-x-6 lg:py-4">
                     <dt className="line-clamp-1 shrink-0 text-lg leading-tight text-neutral-800 lg:line-clamp-6 lg:w-40">
-                      Security Council
+                      {/* Security Council */}
+                      {t("members.filter.security_council")}
                     </dt>
                     <dd className="size-full text-base leading-tight text-neutral-500">
-                      {multisigMembers?.length === 1 ? "1 member" : `${multisigMembers?.length || 0} members`}
+                      {multisigMembers?.length === 1
+                        ? `1 ${t("members.security_council.member")}`
+                        : `${multisigMembers?.length || 0} ${t("members.security_council.members")}`}
                     </dd>
                   </div>
                 </If>
@@ -126,16 +130,16 @@ export default function MembersList() {
           </dl>
           <If not={isConnected}>
             <Then>
-              <Button onClick={() => open()}>Connect to create your profile</Button>
+              <Button onClick={() => open()}>{t("members.profile.connect_to_create")}</Button>
             </Then>
             <ElseIf val={toggleValue} is="multisig">
               {/* nop */}
             </ElseIf>
             <ElseIf true={announce}>
-              <Button onClick={() => setShowProfileCreationDialog(true)}>Update my delegate profile</Button>
+              <Button onClick={() => setShowProfileCreationDialog(true)}>{t("members.profile.update")}</Button>
             </ElseIf>
             <Else>
-              <Button onClick={() => setShowProfileCreationDialog(true)}>Create my delegate profile</Button>
+              <Button onClick={() => setShowProfileCreationDialog(true)}>{t("members.profile.create")}</Button>
             </Else>
           </If>
           <DelegateAnnouncementDialog

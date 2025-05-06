@@ -6,12 +6,13 @@ import "@aragon/ods/index.css";
 import "@/pages/globals.css";
 import { PUB_APP_NAME } from "@/constants";
 import Head from "next/head";
+import { appWithTranslation } from "next-i18next";
 
 const manrope = Manrope({
   subsets: ["latin"],
 });
 
-export default function AragonetteApp({ Component, pageProps }: any) {
+function AragonetteApp({ Component, pageProps }: any) {
   return (
     <div className={manrope.className}>
       <Head>
@@ -26,3 +27,5 @@ export default function AragonetteApp({ Component, pageProps }: any) {
     </div>
   );
 }
+
+export default appWithTranslation(AragonetteApp);

@@ -4,8 +4,10 @@ import { MultisigMemberListItem } from "./MultisigMemberListItem";
 import { PleaseWaitSpinner } from "@/components/please-wait";
 import { useMultisigMembers } from "../hooks/useMultisigMembers";
 import { PUB_CHAIN } from "@/constants";
+import { useTranslation } from "next-i18next";
 
 export const MultisigMemberList: React.FC = () => {
+  const { t } = useTranslation("common");
   const [searchValue, setSearchValue] = useState<string>();
   const { members, isLoading } = useMultisigMembers();
 
@@ -55,11 +57,12 @@ export const MultisigMemberList: React.FC = () => {
 };
 
 function NoMembersView({ filtered }: { filtered?: boolean }) {
+  const { t } = useTranslation("common");
   let message: string;
   if (filtered) {
     message = "There are no members matching the current filter. Please try entering a different search term.";
   } else {
-    message = "There are no multisig members yet. Here you will see the addresses of members who can create proposals.";
+    message = t("members.security_council.message");
   }
 
   return (

@@ -3,6 +3,7 @@ import { formatHexString, equalAddresses } from "@/utils/evm";
 import { type IDataListItemProps, DataList, MemberAvatar, Tag } from "@aragon/gov-ui-kit";
 import { useAccount } from "wagmi";
 import { Address } from "viem";
+import { useTranslation } from "next-i18next";
 
 export type IMultisigMemberListItemProps = IDataListItemProps & {
   /** 0x address of the user */
@@ -12,6 +13,7 @@ export type IMultisigMemberListItemProps = IDataListItemProps & {
 };
 
 export const MultisigMemberListItem: React.FC<IMultisigMemberListItemProps> = (props) => {
+  const { t } = useTranslation("common");
   const { avatarSrc, address, ...otherProps } = props;
   const { address: currentUserAddress, isConnected } = useAccount();
   const isCurrentUser = isConnected && address && equalAddresses(currentUserAddress, address);

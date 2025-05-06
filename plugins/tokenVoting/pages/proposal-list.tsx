@@ -9,10 +9,12 @@ import { Else, If, Then } from "@/components/if";
 import { PUB_TOKEN_VOTING_PLUGIN_ADDRESS, PUB_CHAIN } from "@/constants";
 import { MainSection } from "@/components/layout/main-section";
 import { MissingContentView } from "@/components/MissingContentView";
+import { useTranslation } from "next-i18next";
 
 const DEFAULT_PAGE_SIZE = 6;
 
 export default function Proposals() {
+  const { t } = useTranslation();
   const { isConnected } = useAccount();
   const canCreate = useCanCreateProposal();
   const { data: blockNumber } = useBlockNumber({ watch: true });
@@ -50,7 +52,7 @@ export default function Proposals() {
     <MainSection narrow>
       <SectionView>
         <h1 className="line-clamp-1 flex flex-1 shrink-0 text-2xl font-normal leading-tight text-neutral-800 md:text-3xl">
-          Proposals
+          {t("token-voting.proposals")}
         </h1>
         <div className="justify-self-end">
           <If true={isConnected && canCreate}>

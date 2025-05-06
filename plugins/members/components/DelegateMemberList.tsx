@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DataList, IllustrationHuman } from "@aragon/gov-ui-kit";
+import { useTranslation } from "next-i18next";
 import { DelegateListItem } from "./DelegateListItem";
 import { equalAddresses } from "@/utils/evm";
 import { useDelegates } from "../hooks/useDelegates";
@@ -16,6 +17,7 @@ interface IDelegateMemberListProps {
 }
 
 export const DelegateMemberList: React.FC<IDelegateMemberListProps> = ({ verifiedOnly }) => {
+  const { t } = useTranslation("common");
   const { address } = useAccount();
   const [searchValue, setSearchValue] = useState<string>();
   //   const [activeSort, setActiveSort] = useState<string>();
@@ -27,7 +29,7 @@ export const DelegateMemberList: React.FC<IDelegateMemberListProps> = ({ verifie
   });
 
   if (loadingStatus === "pending" && !delegates?.length) {
-    return <PleaseWaitSpinner fullMessage="Please wait, loading candidates" />;
+    return <PleaseWaitSpinner fullMessage={t("members.delegates.loading")} />;
   } else if (!delegates?.length) {
     return <NoDelegatesView verified={verifiedOnly} />;
   }
@@ -47,7 +49,7 @@ export const DelegateMemberList: React.FC<IDelegateMemberListProps> = ({ verifie
         <DataList.Filter
           onSearchValueChange={setSearchValue}
           searchValue={searchValue}
-          placeholder="Filter by address"
+          placeholder={t("members.delegates.filter_placeholder")}
           // onSortChange={setActiveSort}
           // activeSort={activeSort}
           // sortItems={sortItems}
@@ -94,24 +96,15 @@ export const DelegateMemberList: React.FC<IDelegateMemberListProps> = ({ verifie
 };
 
 function NoDelegatesView({ verified, filtered }: { verified?: boolean; filtered?: boolean }) {
-  let message: string;
-  if (filtered) {
-    if (verified) {
-      message =
-        "There are no verified delegate profiles matching the current filter. Please try entering a different search term.";
-    } else {
-      message =
-        "There are no delegate profiles matching the current filter. Please try entering a different search term.";
-    }
-  } else {
-    if (verified) {
-      message =
-        "There are no verified delegate profiles with a public an announcement yet. Here you will see the addresses of members who have posted their candidacy. Be the first to post an announcement.";
-    } else {
-      message =
-        "No delegate profiles posted an announcement yet. Here you will see the addresses of members who have posted their candidacy. Be the first to post an announcement.";
-    }
-  }
+  const { t } = useTranslation("common");
+  const messageKey = filtered
+    ? verified
+      ? "members.delegates.no_delegates.verified_filtered"
+      : "members.delegates.no_delegates.all_filtered"
+    : verified
+      ? "members.delegates.no_delegates.verified_empty"
+      : "members.delegates.no_delegates.all_empty";
+  const message = t(messageKey);
 
   return (
     <div className="w-full">

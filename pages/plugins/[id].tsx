@@ -5,6 +5,8 @@ import { resolveQueryParam } from "@/utils/query";
 import { NotFound } from "@/components/not-found";
 import { plugins } from "@/plugins";
 import { MainSection } from "@/components/layout/main-section";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { appWithTranslation } from "next-i18next";
 
 const PluginLoader: FC = () => {
   const { query } = useRouter();
@@ -14,6 +16,7 @@ const PluginLoader: FC = () => {
 
   useEffect(() => {
     if (!pluginId) return;
+    // const plugins = usePlugins();
 
     const plugin = plugins.find((p) => p.id === pluginId);
     if (!plugin) return;
@@ -46,4 +49,24 @@ const PluginLoader: FC = () => {
   return <PageComponent />;
 };
 
-export default PluginLoader;
+export default appWithTranslation(PluginLoader);
+
+export async function getStaticProps({ locale }: { locale: any }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}
+
+export async function getStaticPaths() {
+  // 获取所有插件的 ID
+  const paths = plugins.map((plugin) => ({
+    params: { id: plugin.id },
+  }));
+
+  return {
+    paths,
+    fallback: false, // 如果访问的路径不在 paths 中，返回 404
+  };
+}

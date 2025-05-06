@@ -5,21 +5,21 @@ import { useAccount } from "wagmi";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { Else, If, Then } from "@/components/if";
 import { PUB_APP_NAME } from "@/constants";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function StandardHome() {
   const { isConnected } = useAccount();
   const { open } = useWeb3Modal();
+  const { t } = useTranslation("common");
 
   return (
     <MainSection narrow>
       <Card>
         <h1 className="line-clamp-1 flex flex-1 shrink-0 text-2xl font-normal leading-tight text-neutral-800 md:text-3xl">
-          Welcome to {PUB_APP_NAME}
+          {t("home.welcome", { appName: PUB_APP_NAME })}
         </h1>
-        <p className="text-md text-neutral-400">
-          A beaufitul DAO experience in a simple template that you can customize. Get started by connecting your wallet
-          and selecting a plugin from the menu.
-        </p>
+        <p className="text-md text-neutral-400">{t("home.description")}</p>
         <div className="">
           <IllustrationHuman className="mx-auto mb-10 max-w-96" body="BLOCKS" expression="SMILE_WINK" hairs="CURLY" />
           <div className="flex justify-center">
@@ -31,7 +31,7 @@ export default function StandardHome() {
               </Then>
               <Else>
                 <Button size="md" variant="primary" onClick={() => open()}>
-                  <span>Connect wallet</span>
+                  <span>{t("home.connect_wallet")}</span>
                 </Button>
               </Else>
             </If>
@@ -56,3 +56,11 @@ const Card = function ({ children }: { children: ReactNode }) {
     </div>
   );
 };
+
+export async function getStaticProps({ locale }: { locale: any }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}

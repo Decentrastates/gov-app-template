@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "home": "Home",
+    "proposals": "Proposals",
+    "plugins": "Plugins",
+    "members": "Members",
+    "dashboard": "Dashboard",
+    "connect": "Connect Wallet"
+  },
+  "plugins": {
+    "multisig": "Multisig",
+    "token-voting": "Token Voting",
+    "lock-to-vote": "Lock to vote",
+    "optimistic": "Optimistic",
+    "opt-multisig": "Multisig (Optimistic)",
+    "emergency": "Emergency",
+    "members": "Members"
+  },
+  "members": {
+    "delegates": {
+      "title": "Delegates",
+      "filter_placeholder": "Filter by address",
+      "loading": "Please wait, loading candidates",
+      "no_delegates": {
+        "verified_filtered": "There are no verified delegate profiles matching the current filter. Please try entering a different search term.",
+        "all_filtered": "There are no delegate profiles matching the current filter. Please try entering a different search term.",
+        "verified_empty": "There are no verified delegate profiles with a public an announcement yet. Here you will see the addresses of members who have posted their candidacy. Be the first to post an announcement.",
+        "all_empty": "No delegate profiles posted an announcement yet. Here you will see the addresses of members who have posted their candidacy. Be the first to post an announcement."
+      },
+      "profile": {
+        "voting_power": "Voting power",
+        "token_balance": "Token balance",
+        "connect": "Connect to delegate",
+        "already_delegated": "Already delegated",
+        "reclaim": "Reclaim voting power",
+        "delegate": "Delegate voting power",
+        "details": "Details",
+        "show_explorer": "Show on the block explorer",
+        "resources": "Resources"
+      }
+    },
+    "security_council": {
+      "title": "Security Council",
+      "member": "Member",
+      "members": "Members",
+      "message": "There are no multisig members yet. Here you will see the addresses of members who can create proposals."
+    },
+    "filter": {
+      "registered": "Registered",
+      "verified": "Verified",
+      "security_council": "Security Council"
+    },
+    "details": {
+      "title": "Details",
+      "delegation_description": "Proposals submitted to the community can be vetoed by token holders. Additionally, token holders can opt to delegate their voting power to delegates.",
+      "security_council_description": "Proposals are created by the Security Council. When its members approve one, the proposal is forwarded to the community veto phase for ratification.",
+      "about_project": "About the project",
+      "learn_more": "Learn more about {{appName}}",
+      "token-contract": "Token Contract",
+      "delegates": "Delegates",
+      "delegate": "Delegate"
+    },
+    "profile": {
+      "connect_to_create": "Connect to create your profile",
+      "update": "Update my delegate profile",
+      "create": "Create my delegate profile"
+    }
+  },
+  "home": {
+    "welcome": "Welcome to {{appName}}",
+    "description": "A beautiful DAO experience in a simple template that you can customize. Get started by connecting your wallet and selecting a plugin from the menu.",
+    "connect_wallet": "Connect wallet"
+  },
+  "proposal": {
+    "create": "Create Proposal",
+    "title": {
+      "label": "Title",
+      "placeholder": "A short title that describes the main purpose"
+    },
+    "summary": {
+      "label": "Summary",
+      "placeholder": "A short summary that outlines the main purpose of the proposal"
+    },
+    "body": {
+      "label": "Body",
+      "placeholder": "A description of what the proposal is all about"
+    },
+    "resources": {
+      "title": "Resources",
+      "optional": "Optional",
+      "description": "Add links to external resources",
+      "empty": "There are no resources yet. Click the button below to add the first one.",
+      "add": "Add resource",
+      "name": {
+        "label": "Resource name",
+        "placeholder": "GitHub, Twitter, etc."
+      },
+      "url": {
+        "label": "URL",
+        "placeholder": "https://..."
+      }
+    },
+    "actions": {
+      "empty": "The proposal has no actions defined yet. Select a type of action to add to the proposal.",
+      "export": "Export actions as JSON",
+      "payment": "Add a payment"
+    }
+  },
+  "token-voting": {
+    "token": "代币",
+    "proposals": "提案",
+    "power": "投票权重"
+  }
+}

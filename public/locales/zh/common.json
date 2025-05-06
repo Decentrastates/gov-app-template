@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "home": "主页",
+    "proposals": "提案",
+    "plugins": "插件",
+    "members": "成员",
+    "dashboard": "仪表盘",
+    "connect": "连接钱包"
+  },
+  "plugins": {
+    "multisig": "多签",
+    "token-voting": "代币投票",
+    "lock-to-vote": "锁定投票",
+    "optimistic": "乐观治理",
+    "opt-multisig": "多签（乐观治理）",
+    "emergency": "紧急治理",
+    "members": "成员"
+  },
+  "members": {
+    "delegates": {
+      "title": "委托人",
+      "filter_placeholder": "按地址筛选",
+      "loading": "请稍候，正在加载候选人",
+      "no_delegates": {
+        "verified_filtered": "没有找到符合当前筛选条件的已验证委托人资料。请尝试输入其他搜索词。",
+        "all_filtered": "没有找到符合当前筛选条件的委托人资料。请尝试输入其他搜索词。",
+        "verified_empty": "目前还没有已验证的委托人发布公告。这里将显示已发布候选资格的成员地址。成为第一个发布公告的委托人。",
+        "all_empty": "目前还没有委托人发布公告。这里将显示已发布候选资格的成员地址。成为第一个发布公告的委托人。"
+      },
+      "profile": {
+        "voting_power": "投票权重",
+        "token_balance": "代币余额",
+        "connect": "连接钱包以委托",
+        "already_delegated": "已委托",
+        "reclaim": "收回投票权",
+        "delegate": "委托投票权",
+        "details": "详细信息",
+        "show_explorer": "在区块浏览器中查看",
+        "resources": "资源"
+      }
+    },
+    "security_council": {
+      "title": "安全委员会",
+      "member": "成员",
+      "members": "成员",
+      "message": "目前还没有安全委员会成员。这里将显示已发布候选资格的成员地址。成为第一个发布公告的安全委员会成员。"
+    },
+    "filter": {
+      "registered": "已注册",
+      "verified": "已验证",
+      "security_council": "安全委员会"
+    },
+    "details": {
+      "title": "详细信息",
+      "delegation_description": "社区提交的提案可以被代币持有者否决。此外，代币持有者可以选择将其投票权委托给代表。",
+      "security_council_description": "提案由安全委员会创建。当其成员批准后，提案将转发到社区否决阶段进行批准。",
+      "about_project": "关于项目",
+      "learn_more": "了解更多关于 {{appName}} 的信息",
+      "token-contract": "代币合约",
+      "delegates": "委托人",
+      "delegate": "委托人"
+    },
+    "profile": {
+      "connect_to_create": "连接钱包以创建个人资料",
+      "update": "更新我的委托人资料",
+      "create": "创建我的委托人资料"
+    }
+  },
+  "home": {
+    "welcome": "欢迎来到 {{appName}}",
+    "description": "这是一个简单但可定制的 DAO 模板，提供优秀的用户体验。连接您的钱包并从菜单中选择插件即可开始使用。",
+    "connect_wallet": "连接钱包"
+  },
+  "proposal": {
+    "create": "创建提案",
+    "title": {
+      "label": "标题",
+      "placeholder": "一个描述主要目的的简短标题"
+    },
+    "summary": {
+      "label": "摘要",
+      "placeholder": "概述提案主要目的的简短摘要"
+    },
+    "body": {
+      "label": "正文",
+      "placeholder": "关于提案的详细描述"
+    },
+    "resources": {
+      "title": "资源",
+      "optional": "可选",
+      "description": "添加外部资源链接",
+      "empty": "暂无资源。点击下方按钮添加第一个资源。",
+      "add": "添加资源",
+      "name": {
+        "label": "资源名称",
+        "placeholder": "GitHub、Twitter 等"
+      },
+      "url": {
+        "label": "链接",
+        "placeholder": "https://..."
+      }
+    },
+    "actions": {
+      "empty": "提案还没有定义任何操作。请选择要添加到提案的操作类型。",
+      "export": "导出操作为 JSON",
+      "payment": "添加付款"
+    }
+  },
+  "token-voting": {
+    "token": "代币",
+    "proposals": "提案",
+    "power": "投票权重"
+  }
+}

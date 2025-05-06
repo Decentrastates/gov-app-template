@@ -65,6 +65,9 @@ importers:
       next:
         specifier: 14.1.4
         version: 14.1.4(@babel/core@7.26.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      next-i18next:
+        specifier: ^15.4.2
+        version: 15.4.2(i18next@25.0.2(typescript@5.8.2))(next@14.1.4(@babel/core@7.26.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-i18next@15.5.1(i18next@25.0.2(typescript@5.8.2))(react-dom@18.2.0(react@18.2.0))(react-native@0.78.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@18.3.20)(bufferutil@4.0.9)(react@18.2.0)(utf-8-validate@5.0.10))(react@18.2.0)(typescript@5.8.2))(react@18.2.0)
       radix-ui:
         specifier: ^1.4.1
         version: 1.4.1(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -2784,6 +2787,9 @@ packages:
   '@types/graceful-fs@4.1.9':
     resolution: {integrity: sha512-olP3sd1qOEe5dXTSaFvQG+02VdRXcdytWLAZsAq1PecU8uqQAhkrnbli7DagjtXKW/Bl7YJbUsa8MPcuc8LHEQ==}
 
+  '@types/hoist-non-react-statics@3.3.6':
+    resolution: {integrity: sha512-lPByRJUer/iN/xa4qpyL0qmL11DqNW81iU/IG1S3uvRUq4oKagz8VCxZjiWkumgt66YT3vOdDgZ0o32sGKtCEw==}
+
   '@types/istanbul-lib-coverage@2.0.6':
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
 
@@ -3656,6 +3662,9 @@ packages:
   core-js-pure@3.41.0:
     resolution: {integrity: sha512-71Gzp96T9YPk63aUvE5Q5qP+DryB4ZloUZPSOebGM88VNw8VNfvdA7z6kGA8iGOTEzAomsRidp4jXSmUIJsL+Q==}
 
+  core-js@3.42.0:
+    resolution: {integrity: sha512-Sz4PP4ZA+Rq4II21qkNqOEDTDrCvcANId3xpIgB34NDkWc3UduWj2dqEtN9yZIq8Dk3HyPI33x9sqqU5C8sr0g==}
+
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
 
@@ -4406,6 +4415,12 @@ packages:
   hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
 
+  hoist-non-react-statics@3.3.2:
+    resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
+
+  html-parse-stringify@3.0.1:
+    resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
+
   htmlparser2@8.0.2:
     resolution: {integrity: sha512-GYdjWKDkbRLkZ5geuHs5NY1puJ+PXwP7+fHPRz06Eirsb9ugf6d8kkXav6ADhcODhFFPMIXyxkxSuMf3D6NCFA==}
 
@@ -4421,6 +4436,17 @@ packages:
     resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
     engines: {node: '>=18'}
     hasBin: true
+
+  i18next-fs-backend@2.6.0:
+    resolution: {integrity: sha512-3ZlhNoF9yxnM8pa8bWp5120/Ob6t4lVl1l/tbLmkml/ei3ud8IWySCHt2lrY5xWRlSU5D9IV2sm5bEbGuTqwTw==}
+
+  i18next@25.0.2:
+    resolution: {integrity: sha512-xWxgK8GAaPYkV9ia2tdgbtdM+qiC+ysVTBPvXhpCORU/+QkeQe3BSI7Crr+c4ZXULN1PfnXG/HY2n7HGx4KKBg==}
+    peerDependencies:
+      typescript: ^5
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   idb-keyval@6.2.1:
     resolution: {integrity: sha512-8Sb3veuYCyrZL+VBt9LJfZjLUPWVvqn8tG28VqYNFCo43KHcKuq+b4EiXGeuaLAQWL2YmyDgMp2aSpH9JHsEQg==}
@@ -5105,6 +5131,15 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
+  next-i18next@15.4.2:
+    resolution: {integrity: sha512-zgRxWf7kdXtM686ecGIBQL+Bq0+DqAhRlasRZ3vVF0TmrNTWkVhs52n//oU3Fj5O7r/xOKkECDUwfOuXVwTK/g==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      i18next: '>= 23.7.13'
+      next: '>= 12.0.0'
+      react: '>= 17.0.2'
+      react-i18next: '>= 13.5.0'
+
   next@14.1.4:
     resolution: {integrity: sha512-1WTaXeSrUwlz/XcnhGTY7+8eiaFvdet5z9u3V2jb+Ek1vFo0VhHKSAIJvDWfQpttWjnyw14kBeq28TPq7bTeEQ==}
     engines: {node: '>=18.17.0'}
@@ -5667,6 +5702,22 @@ packages:
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
+
+  react-i18next@15.5.1:
+    resolution: {integrity: sha512-C8RZ7N7H0L+flitiX6ASjq9p5puVJU1Z8VyL3OgM/QOMRf40BMZX+5TkpxzZVcTmOLPX5zlti4InEX5pFyiVeA==}
+    peerDependencies:
+      i18next: '>= 23.2.3'
+      react: '>= 16.8.0'
+      react-dom: '*'
+      react-native: '*'
+      typescript: ^5
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+      typescript:
+        optional: true
 
   react-imask@7.5.0:
     resolution: {integrity: sha512-yWExhHphDmNaHvmOsYR+5QcludeBdYk6bXyo8kouIJFAub5sF+O0kLPVupg2yhd7EfTqjLswFZ/tqY1AhKnd9Q==}
@@ -6496,6 +6547,10 @@ packages:
 
   vlq@1.0.1:
     resolution: {integrity: sha512-gQpnTgkubC6hQgdIcRdYGDSDc+SaujOdyesZQMv6JlfQee/9Mp0Qhnys6WxDWvQnL5WZdT7o2Ul187aSt0Rq+w==}
+
+  void-elements@3.1.0:
+    resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
+    engines: {node: '>=0.10.0'}
 
   w3c-keyname@2.2.8:
     resolution: {integrity: sha512-dpojBhNsCNN7T82Tm7k26A6G9ML3NkhDsnw9n/eoxSRlVBB4CEtIQ/KTCLI2Fwf3ataSXRhYFkQi3SlnFwPvPQ==}
@@ -10107,6 +10162,11 @@ snapshots:
     dependencies:
       '@types/node': 20.17.30
 
+  '@types/hoist-non-react-statics@3.3.6':
+    dependencies:
+      '@types/react': 18.3.20
+      hoist-non-react-statics: 3.3.2
+
   '@types/istanbul-lib-coverage@2.0.6': {}
 
   '@types/istanbul-lib-report@3.0.3':
@@ -11887,6 +11947,8 @@ snapshots:
 
   core-js-pure@3.41.0: {}
 
+  core-js@3.42.0: {}
+
   core-util-is@1.0.3: {}
 
   cosmiconfig@5.2.1:
@@ -12803,6 +12865,14 @@ snapshots:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
 
+  hoist-non-react-statics@3.3.2:
+    dependencies:
+      react-is: 16.13.1
+
+  html-parse-stringify@3.0.1:
+    dependencies:
+      void-elements: 3.1.0
+
   htmlparser2@8.0.2:
     dependencies:
       domelementtype: 2.3.0
@@ -12821,6 +12891,14 @@ snapshots:
   human-signals@5.0.0: {}
 
   husky@9.1.7: {}
+
+  i18next-fs-backend@2.6.0: {}
+
+  i18next@25.0.2(typescript@5.8.2):
+    dependencies:
+      '@babel/runtime': 7.27.0
+    optionalDependencies:
+      typescript: 5.8.2
 
   idb-keyval@6.2.1: {}
 
@@ -13657,6 +13735,18 @@ snapshots:
 
   neo-async@2.6.2: {}
 
+  next-i18next@15.4.2(i18next@25.0.2(typescript@5.8.2))(next@14.1.4(@babel/core@7.26.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-i18next@15.5.1(i18next@25.0.2(typescript@5.8.2))(react-dom@18.2.0(react@18.2.0))(react-native@0.78.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@18.3.20)(bufferutil@4.0.9)(react@18.2.0)(utf-8-validate@5.0.10))(react@18.2.0)(typescript@5.8.2))(react@18.2.0):
+    dependencies:
+      '@babel/runtime': 7.27.0
+      '@types/hoist-non-react-statics': 3.3.6
+      core-js: 3.42.0
+      hoist-non-react-statics: 3.3.2
+      i18next: 25.0.2(typescript@5.8.2)
+      i18next-fs-backend: 2.6.0
+      next: 14.1.4(@babel/core@7.26.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react: 18.2.0
+      react-i18next: 15.5.1(i18next@25.0.2(typescript@5.8.2))(react-dom@18.2.0(react@18.2.0))(react-native@0.78.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@18.3.20)(bufferutil@4.0.9)(react@18.2.0)(utf-8-validate@5.0.10))(react@18.2.0)(typescript@5.8.2)
+
   next@14.1.4(@babel/core@7.26.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@next/env': 14.1.4
@@ -14273,6 +14363,17 @@ snapshots:
   react-hook-form@7.55.0(react@18.2.0):
     dependencies:
       react: 18.2.0
+
+  react-i18next@15.5.1(i18next@25.0.2(typescript@5.8.2))(react-dom@18.2.0(react@18.2.0))(react-native@0.78.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@18.3.20)(bufferutil@4.0.9)(react@18.2.0)(utf-8-validate@5.0.10))(react@18.2.0)(typescript@5.8.2):
+    dependencies:
+      '@babel/runtime': 7.27.0
+      html-parse-stringify: 3.0.1
+      i18next: 25.0.2(typescript@5.8.2)
+      react: 18.2.0
+    optionalDependencies:
+      react-dom: 18.2.0(react@18.2.0)
+      react-native: 0.78.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@18.3.20)(bufferutil@4.0.9)(react@18.2.0)(utf-8-validate@5.0.10)
+      typescript: 5.8.2
 
   react-imask@7.5.0(react@18.2.0):
     dependencies:
@@ -15207,6 +15308,8 @@ snapshots:
       - zod
 
   vlq@1.0.1: {}
+
+  void-elements@3.1.0: {}
 
   w3c-keyname@2.2.8: {}
 
