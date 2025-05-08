@@ -3,6 +3,7 @@ import { Button, Card, DaoDataListItemStructure, Heading } from "@aragon/gov-ui-
 import { PUB_BLOG_URL, PUB_FORUM_URL } from "@/constants";
 
 type IDashboardList = {
+  id: string;
   name: string;
   description: string;
   address?: string;
@@ -16,6 +17,7 @@ type IDashboardList = {
 
 const daoList: IDashboardList[] = [
   {
+    id: "1",
     name: "Assets",
     address: "0xc6B61B776367b236648399ACF4A0bc5aDe70708F",
     // ens: "redblow.ens",
@@ -28,6 +30,7 @@ const daoList: IDashboardList[] = [
     // isExternal: true
   },
   {
+    id: "2",
     name: "Assets",
     // address: "0xc6B61B776367b236648399ACF4A0bc5aDe70708F",
     ens: "redblow.ens",
@@ -40,6 +43,7 @@ const daoList: IDashboardList[] = [
     // isExternal: true
   },
   {
+    id: "3",
     name: "Assets",
     address: "0xc6B61B776367b236648399ACF4A0bc5aDe70708F",
     // ens: "redblow.ens",
@@ -52,6 +56,7 @@ const daoList: IDashboardList[] = [
     // isExternal: true
   },
   {
+    id: "4",
     name: "Assets",
     address: "0xc6B61B776367b236648399ACF4A0bc5aDe70708F",
     // ens: "redblow.ens",
@@ -69,7 +74,7 @@ export const DaoList = () => {
   return (
     <div className="grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-6 sm:grid-cols-[repeat(auto-fill,_minmax(350px,_1fr))] md:gap-6">
       {daoList.map((dao) => (
-        <DaoDataListItemStructure key={dao.name} {...dao} />
+        <DaoDataListItemStructure key={dao.id} {...dao} />
       ))}
     </div>
   );
