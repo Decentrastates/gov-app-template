@@ -8,10 +8,10 @@ import { useEffect } from "react";
 import { createClient, http } from "viem";
 import { normalize } from "viem/ens";
 import { createConfig, useAccount, useEnsAvatar, useEnsName, useSwitchChain } from "wagmi";
-import { mainnet } from "wagmi/chains";
+import { mainnet, polygon } from "wagmi/chains";
 
 const config = createConfig({
-  chains: [mainnet],
+  chains: [polygon],
   ssr: true,
   client({ chain }) {
     return createClient({
@@ -30,14 +30,14 @@ const WalletContainer = () => {
 
   const { data: ensName } = useEnsName({
     config,
-    chainId: mainnet.id,
+    chainId: polygon.id,
     address: address,
   });
 
   const { data: ensAvatar } = useEnsAvatar({
     config,
     name: normalize(ensName!),
-    chainId: mainnet.id,
+    chainId: polygon.id,
     gatewayUrls: ["https://cloudflare-ipfs.com"],
     query: { enabled: !!ensName },
   });
