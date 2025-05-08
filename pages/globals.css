@@ -92,7 +92,7 @@
 }
 
 body {
-  /* Variables imported from layout.tsx > @aragon/ods */
+  /* Variables imported from layout.tsx > @aragon/gov-ui-kit */
   color: var(--ods-color-neutral-800);
   background-color: var(--ods-color-neutral-50);
 
@@ -112,7 +112,7 @@ h3,
 h4,
 h5,
 h6 {
-  /* Variables imported from layout.tsx > @aragon/ods */
+  /* Variables imported from layout.tsx > @aragon/gov-ui-kit */
   color: var(--ods-color-neutral-800);
 
   /* Custom font here */
@@ -123,7 +123,7 @@ h6 {
 p,
 ul,
 ol {
-  /* Variables imported from layout.tsx > @aragon/ods */
+  /* Variables imported from layout.tsx > @aragon/gov-ui-kit */
   color: var(--ods-color-neutral-600);
 }
 

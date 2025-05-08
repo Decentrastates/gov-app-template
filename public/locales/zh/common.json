@@ -14,9 +14,18 @@
     "optimistic": "乐观治理",
     "opt-multisig": "多签（乐观治理）",
     "emergency": "紧急治理",
-    "members": "成员"
+    "members": "成员",
+    "assets": "资产",
+    "transactions": "交易",
+    "settings": "设置"
   },
   "members": {
+    "holders": {
+      "title": "代币持有者",
+      "filter_placeholder": "按地址筛选",
+      "loading": "请稍候，正在加载代币持有者",
+      "no_holders": {}
+    },
     "delegates": {
       "title": "委托人",
       "filter_placeholder": "按地址筛选",
@@ -46,6 +55,7 @@
       "message": "目前还没有安全委员会成员。这里将显示已发布候选资格的成员地址。成为第一个发布公告的安全委员会成员。"
     },
     "filter": {
+      "holders": "持有者",
       "registered": "已注册",
       "verified": "已验证",
       "security_council": "安全委员会"
@@ -64,6 +74,9 @@
       "connect_to_create": "连接钱包以创建个人资料",
       "update": "更新我的委托人资料",
       "create": "创建我的委托人资料"
+    },
+    "messages": {
+      "full_message": "请稍候，正在加载成员"
     }
   },
   "home": {

@@ -49,7 +49,7 @@ export default function Proposals() {
   }
 
   return (
-    <MainSection narrow>
+    <MainSection>
       <SectionView>
         <h1 className="line-clamp-1 flex flex-1 shrink-0 text-2xl font-normal leading-tight text-neutral-800 md:text-3xl">
           {t("token-voting.proposals")}

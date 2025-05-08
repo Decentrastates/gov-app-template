@@ -6,7 +6,6 @@ import { NotFound } from "@/components/not-found";
 import { plugins } from "@/plugins";
 import { MainSection } from "@/components/layout/main-section";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { appWithTranslation } from "next-i18next";
 
 const PluginLoader: FC = () => {
   const { query } = useRouter();
@@ -49,7 +48,7 @@ const PluginLoader: FC = () => {
   return <PageComponent />;
 };
 
-export default appWithTranslation(PluginLoader);
+export default PluginLoader;
 
 export async function getStaticProps({ locale }: { locale: any }) {
   return {

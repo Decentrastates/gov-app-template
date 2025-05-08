@@ -12,7 +12,7 @@ export const MultisigMemberList: React.FC = () => {
   const { members, isLoading } = useMultisigMembers();
 
   if (isLoading && !members?.length) {
-    return <PleaseWaitSpinner fullMessage="Please wait, loading members" />;
+    return <PleaseWaitSpinner fullMessage={t("members.messages.full_message")} />;
   } else if (!members?.length) {
     return <NoMembersView />;
   }

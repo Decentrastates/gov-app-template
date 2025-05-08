@@ -14,9 +14,23 @@
     "optimistic": "Optimistic",
     "opt-multisig": "Multisig (Optimistic)",
     "emergency": "Emergency",
-    "members": "Members"
+    "members": "Members",
+    "assets": "Assets",
+    "transactions": "Transactions",
+    "settings": "Settings"
   },
   "members": {
+    "holders": {
+      "title": "Holders",
+      "filter_placeholder": "Filter by address",
+      "loading": "Please wait, loading members",
+      "no_holders": {
+        "verified_filtered": "There are no verified members matching the current filter. Please try entering a different search term.",
+        "all_filtered": "There are no members matching the current filter. Please try entering a different search term.",
+        "verified_empty": "There are no verified members with a public an announcement yet. Here you will see the addresses of members who have posted their candidacy. Be the first to post an announcement.",
+        "all_empty": "No members posted an announcement yet. Here you will see the addresses of members who have posted their candidacy. Be the first to post an announcement."
+      }
+    },
     "delegates": {
       "title": "Delegates",
       "filter_placeholder": "Filter by address",
@@ -46,6 +60,7 @@
       "message": "There are no multisig members yet. Here you will see the addresses of members who can create proposals."
     },
     "filter": {
+      "holders": "Holders",
       "registered": "Registered",
       "verified": "Verified",
       "security_council": "Security Council"
@@ -64,6 +79,9 @@
       "connect_to_create": "Connect to create your profile",
       "update": "Update my delegate profile",
       "create": "Create my delegate profile"
+    },
+    "messages": {
+      "full_message": "Please wait, loading members"
     }
   },
   "home": {

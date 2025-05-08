@@ -1,7 +1,7 @@
 import { IButtonProps } from "@aragon/gov-ui-kit";
 import { Address, Hex, AbiFunction } from "viem";
 import { IVotesDataListVariant } from "@/components/proposalVoting/votesDataList/votesDataListItemStructure";
-import { IApprovalThresholdResult, ProposalType } from "@aragon/ods";
+import { IApprovalThresholdResult, ProposalType } from "@aragon/gov-ui-kit";
 
 // General types
 type JsonLiteral = string | number | boolean;
