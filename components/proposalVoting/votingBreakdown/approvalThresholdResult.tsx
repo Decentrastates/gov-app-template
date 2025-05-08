@@ -1,6 +1,6 @@
 import {
   AvatarIcon,
-  type IApprovalThresholdResult,
+  // type IApprovalThresholdResult,
   IconType,
   NumberFormat,
   Progress,
@@ -8,6 +8,7 @@ import {
   Button,
 } from "@aragon/gov-ui-kit";
 import { type VotingCta } from "./types";
+import { IApprovalThresholdResult } from "@aragon/ods";
 
 export interface IBreakdownApprovalThresholdResult extends IApprovalThresholdResult {
   cta?: VotingCta;
