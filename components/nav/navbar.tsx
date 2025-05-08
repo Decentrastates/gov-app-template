@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { MobileNavDialog } from "./mobileNavDialog";
 import { NavLink, type INavLink } from "./navLink";
-import { AvatarIcon, IconType } from "@aragon/gov-ui-kit";
+import { AvatarIcon, DaoAvatar, IconType } from "@aragon/gov-ui-kit";
 import { useTranslation } from "next-i18next";
 
 export const Navbar: React.FC = () => {
@@ -39,9 +39,13 @@ export const Navbar: React.FC = () => {
                   "outline-none focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset" // focus styles
                 )}
               >
-                <h1 className="line-clamp-1 flex flex-1 shrink-0 text-2xl font-normal leading-tight text-neutral-800 md:text-3xl">
+                <DaoAvatar
+                  name="CD Dao"
+                  // src="https://cdn.discordapp.com/icons/672466989217873929/acffa3e9e09ac5962ff803a5f8649040.webp?size=240"
+                />
+                <div className="line-clamp-1 flex flex-1 shrink-0 text-2xl font-normal leading-tight text-neutral-800 md:text-3xl">
                   CDDAO
-                </h1>
+                </div>
                 {/* <img src={PUB_PROJECT_LOGO} width="150" className="shrink-0" alt={PUB_APP_NAME + " logo"} /> */}
               </Link>
               {/* <div className="flex items-center gap-x-2">

@@ -46,7 +46,7 @@ export const PUB_APP_DESCRIPTION = "Patito DAO's official UI to interact with th
 export const PUB_TOKEN_SYMBOL = "PDT";
 
 export const PUB_PROJECT_LOGO = "/logo.png";
-export const PUB_PROJECT_URL = "https://app.cddao.com/";
-export const PUB_BLOG_URL = "https://app.cddao.com/blog";
-export const PUB_FORUM_URL = "https://community.cddao.com/";
+export const PUB_PROJECT_URL = process.env.NEXT_PUBLIC_PROJECT_URL ?? "https://temp.cddao.com/";
+export const PUB_BLOG_URL = process.env.NEXT_PUBLIC_BLOG_URL ?? "https://temp.cddao.com/blog";
+export const PUB_FORUM_URL = process.env.NEXT_PUBLIC_FORUM_URL ?? "https://community.cddao.com/";
 export const PUB_WALLET_ICON = "https://avatars.githubusercontent.com/u/37784886";
