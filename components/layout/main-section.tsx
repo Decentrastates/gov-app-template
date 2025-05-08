@@ -15,5 +15,5 @@ export const MainSection: React.FC<IMainSectionProps> = (props) => {
       </div>
     );
   }
-  return <div className="mx-auto w-full max-w-screen-xl px-4 py-6 md:px-16 md:pb-20 lg:pt-10">{children}</div>;
+  return <div className="px-4 py-6 md:px-6 md:pb-10 lg:pt-6">{children}</div>;
 };
