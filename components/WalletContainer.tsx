@@ -11,7 +11,7 @@ import { createConfig, useAccount, useEnsAvatar, useEnsName, useSwitchChain } fr
 import { mainnet, polygon } from "wagmi/chains";
 
 const config = createConfig({
-  chains: [polygon],
+  chains: [polygon, mainnet],
   ssr: true,
   client({ chain }) {
     return createClient({
@@ -30,14 +30,14 @@ const WalletContainer = () => {
 
   const { data: ensName } = useEnsName({
     config,
-    chainId: polygon.id,
+    chainId: mainnet.id,
     address: address,
   });
 
   const { data: ensAvatar } = useEnsAvatar({
     config,
     name: normalize(ensName!),
-    chainId: polygon.id,
+    chainId: mainnet.id,
     gatewayUrls: ["https://cloudflare-ipfs.com"],
     query: { enabled: !!ensName },
   });
