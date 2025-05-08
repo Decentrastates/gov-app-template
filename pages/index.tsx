@@ -1,6 +1,5 @@
 import { MainSection } from "@/components/layout/main-section";
-import { MemberDataListItemStructure } from "@aragon/gov-ui-kit";
-import { type ReactNode } from "react";
+// import { type ReactNode } from "react";
 import { useAccount } from "wagmi";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 // import { Else, If, Then } from "@/components/if";
@@ -8,6 +7,12 @@ import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { DaoResources } from "@/components/dashboard/DaoResources";
+import dynamic from "next/dynamic";
+
+const MemberDataListItemStructure = dynamic(
+  () => import("@aragon/gov-ui-kit").then((mod) => mod.MemberDataListItemStructure),
+  { ssr: false }
+);
 
 export default function StandardHome() {
   const { isConnected } = useAccount();
@@ -20,7 +25,7 @@ export default function StandardHome() {
         <div className="w-full pb-4 md:pb-6">
           <DaoResources />
         </div>
-        {/* <MemberDataListItemStructure address="0x1234567890123456789012345678901234567890" /> */}
+        <MemberDataListItemStructure address="0x1234567890123456789012345678901234567890" />
         {/* <StaticListComponent itemsCount={21} layoutClassName="grid grid-cols-1 lg:grid-cols-3" pageSize={9} /> */}
         {/* <div className="flex flex-col gap-y-10 pb-6 pt-10 md:flex-row md:gap-x-12 md:pb-12">
           <LatestProposals />
