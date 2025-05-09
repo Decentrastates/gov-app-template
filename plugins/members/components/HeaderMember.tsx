@@ -16,7 +16,8 @@ import { mainnet } from "viem/chains";
 import { useAccount, useEnsName } from "wagmi";
 import { useTokenVotes } from "../../../hooks/useTokenVotes";
 import { Else, ElseIf, If, Then } from "@/components/if";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useAppKit } from "@reown/appkit/react";
+
 import { useDelegateVotingPower } from "../hooks/useDelegateVotingPower";
 import VerifiedDelegates from "../../../verified-delegates.json";
 
@@ -30,7 +31,7 @@ export const HeaderMember: React.FC<IHeaderMemberProps> = (props) => {
   const { t } = useTranslation("common");
   const { address: delegateAddress, bio, name } = props;
   const breadcrumbs: IBreadcrumbsLink[] = [{ label: "Delegates", href: "#/" }, { label: props.address }];
-  const { open } = useWeb3Modal();
+  const { open } = useAppKit();
   const { address: myAddress, isConnected } = useAccount();
   const { data: ensName } = useEnsName({ chainId: mainnet.id, address: delegateAddress });
   const { votingPower, balance: delegateTokenBalance, refetch } = useTokenVotes(delegateAddress);

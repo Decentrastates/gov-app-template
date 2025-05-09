@@ -7,7 +7,8 @@ import { useCreateProposal } from "../hooks/useCreateProposal";
 import { useAccount } from "wagmi";
 import { useCanCreateProposal } from "../hooks/useCanCreateProposal";
 import { MissingContentView } from "@/components/MissingContentView";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useAppKit } from "@reown/appkit/react";
+
 import { Address } from "viem";
 import { NewActionDialog, NewActionType } from "@/components/dialogs/NewActionDialog";
 import { AddActionCard } from "@/components/cards/AddActionCard";
@@ -262,7 +263,7 @@ const PlaceHolderOr = ({
   canCreate: boolean | undefined;
   children: ReactNode;
 }) => {
-  const { open } = useWeb3Modal();
+  const { open } = useAppKit();
   return (
     <If true={!selfAddress || !isConnected}>
       <Then>

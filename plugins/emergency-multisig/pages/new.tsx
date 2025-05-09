@@ -4,7 +4,8 @@ import { useAccount } from "wagmi";
 import { Else, ElseIf, If, Then } from "@/components/if";
 import { PleaseWaitSpinner } from "@/components/please-wait";
 import { MissingContentView } from "@/components/MissingContentView";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useAppKit } from "@reown/appkit/react";
+
 import { useDerivedWallet } from "../../../hooks/useDerivedWallet";
 import { MainSection } from "@/components/layout/main-section";
 import { useCreateProposal } from "../hooks/useCreateProposal";
@@ -279,7 +280,7 @@ const PlaceHolderOr = ({
   canCreate: boolean | undefined;
   children: ReactNode;
 }) => {
-  const { open } = useWeb3Modal();
+  const { open } = useAppKit();
   const { publicKey, requestSignature } = useDerivedWallet();
   const {
     data: registeredSigners,

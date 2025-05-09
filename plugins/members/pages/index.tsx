@@ -8,7 +8,8 @@ import { DelegateMemberList } from "../components/DelegateMemberList";
 import { AddressText } from "@/components/text/address";
 import { PUB_TOKEN_ADDRESS } from "@/constants";
 import { Else, ElseIf, If, Then } from "@/components/if";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useAppKit } from "@reown/appkit/react";
+
 import { useDelegates } from "../hooks/useDelegates";
 import { useDelegateAnnounce } from "../hooks/useDelegateAnnounce";
 import { MultisigMemberList } from "../components/MultisigMemberList";
@@ -17,7 +18,7 @@ import { useTranslation } from "next-i18next";
 
 export default function MembersList() {
   const { t } = useTranslation("common");
-  const { open } = useWeb3Modal();
+  const { open } = useAppKit();
   const [showProfileCreationDialog, setShowProfileCreationDialog] = useState(false);
   const { address, isConnected } = useAccount();
   const { delegates } = useDelegates();

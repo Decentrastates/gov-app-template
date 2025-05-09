@@ -8,7 +8,8 @@ import Link from "next/link";
 import { Else, ElseIf, If, Then } from "@/components/if";
 import { PUB_OPT_MULTISIG_PLUGIN_ADDRESS, PUB_CHAIN } from "@/constants";
 import { MainSection } from "@/components/layout/main-section";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useAppKit } from "@reown/appkit/react";
+
 import { MissingContentView } from "@/components/MissingContentView";
 
 const DEFAULT_PAGE_SIZE = 6;
@@ -16,7 +17,7 @@ const DEFAULT_PAGE_SIZE = 6;
 export default function Proposals() {
   const { isConnected } = useAccount();
   const { canCreate } = useCanCreateProposal();
-  const { open } = useWeb3Modal();
+  const { open } = useAppKit();
 
   const { data: blockNumber } = useBlockNumber({ watch: true });
 

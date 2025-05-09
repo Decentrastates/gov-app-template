@@ -1,7 +1,6 @@
 import { MainSection } from "@/components/layout/main-section";
 // import { type ReactNode } from "react";
 import { useAccount } from "wagmi";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
 // import { Else, If, Then } from "@/components/if";
 // import { PUB_APP_NAME } from "@/constants";
 import { useTranslation } from "next-i18next";
@@ -10,6 +9,7 @@ import { DaoResources } from "@/components/dashboard/DaoResources";
 import dynamic from "next/dynamic";
 import { DaoDataListItemStructure } from "@aragon/gov-ui-kit";
 import { DaoList } from "@/components/dashboard/DaoList";
+import { useAppKit } from "@reown/appkit/react";
 
 // const MemberDataListItemStructure = dynamic(
 //   () => import("@aragon/gov-ui-kit").then((mod) => mod.MemberDataListItemStructure),
@@ -18,7 +18,7 @@ import { DaoList } from "@/components/dashboard/DaoList";
 
 export default function StandardHome() {
   const { isConnected } = useAccount();
-  const { open } = useWeb3Modal();
+  const { open } = useAppKit();
   const { t } = useTranslation("common");
 
   return (

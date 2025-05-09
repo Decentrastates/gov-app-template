@@ -1,6 +1,7 @@
 import { type ReactNode, useEffect } from "react";
 import { useAccount, useBlockNumber, useReadContract } from "wagmi";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useAppKit } from "@reown/appkit/react";
+
 import ProposalCard from "@/plugins/emergency-multisig/components/proposal";
 import { EmergencyMultisigPluginAbi } from "@/plugins/emergency-multisig/artifacts/EmergencyMultisigPlugin";
 import { Button, DataList, IconType, ProposalDataListItemSkeleton, type DataListState } from "@aragon/gov-ui-kit";
@@ -16,7 +17,7 @@ const DEFAULT_PAGE_SIZE = 6;
 
 export default function Proposals() {
   const { isConnected } = useAccount();
-  const { open } = useWeb3Modal();
+  const { open } = useAppKit();
   const { data: blockNumber } = useBlockNumber({ watch: true });
   const { publicKey, requestSignature } = useDerivedWallet();
   const { canCreate } = useCanCreateProposal();

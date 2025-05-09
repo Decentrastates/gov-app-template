@@ -1,7 +1,7 @@
 import { PUB_ALCHEMY_API_KEY, PUB_CHAIN } from "@/constants";
 import { formatHexString } from "@/utils/evm";
 import { MemberAvatar } from "@aragon/gov-ui-kit";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useDisconnect, useAppKit, useAppKitNetwork } from "@reown/appkit/react";
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
 import { useEffect } from "react";
@@ -21,10 +21,9 @@ const config = createConfig({
   },
 });
 
-// TODO: update with ODS wallet module - [https://linear.app/aragon/issue/RD-198/create-ods-walletmodule]
 const WalletContainer = () => {
   const { t } = useTranslation("common");
-  const { open } = useWeb3Modal();
+  const { open } = useAppKit();
   const { address, isConnected, chainId } = useAccount();
   const { switchChain } = useSwitchChain();
 

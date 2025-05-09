@@ -19,7 +19,7 @@ import { getTagVariantFromStatus } from "@/utils/ui-variants";
 import { capitalizeFirstLetter } from "@/utils/text";
 import dayjs from "dayjs";
 import { useAccount } from "wagmi";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useAppKit } from "@reown/appkit/react";
 
 const DEFAULT_PROPOSAL_TITLE = "(No proposal title)";
 const DEFAULT_PROPOSAL_SUMMARY = "(No proposal summary)";
@@ -32,7 +32,7 @@ interface ProposalHeaderProps {
 const ProposalHeader: React.FC<ProposalHeaderProps> = ({ proposalIdx, proposal }) => {
   const proposalStatus = useProposalStatus(proposal);
   const tagVariant = getTagVariantFromStatus(proposalStatus);
-  const { open } = useWeb3Modal();
+  const { open } = useAppKit();
   const { isConnected } = useAccount();
   const { claimLockProposal, isConfirming: isConfirmingClaimLock, hasClaimed } = useProposalClaimLock(proposalIdx);
 
