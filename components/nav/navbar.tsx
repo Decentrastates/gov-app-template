@@ -43,7 +43,7 @@ export const Navbar: React.FC = () => {
                   name="CD Dao"
                   // src="https://cdn.discordapp.com/icons/672466989217873929/acffa3e9e09ac5962ff803a5f8649040.webp?size=240"
                 />
-                <div className="line-clamp-1 flex flex-1 shrink-0 text-2xl font-normal leading-tight text-neutral-800 md:text-3xl">
+                <div className="line-clamp-1 flex flex-1 shrink-0 text-2xl font-normal leading-tight text-neutral-800 md:text-2xl">
                   CDDAO
                 </div>
                 {/* <img src={PUB_PROJECT_LOGO} width="150" className="shrink-0" alt={PUB_APP_NAME + " logo"} /> */}

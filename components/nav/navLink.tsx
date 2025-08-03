@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { type ParsedUrlQuery } from "querystring";
 import { resolveQueryParam } from "@/utils/query";
-import { Icon, TabsContent, TabsTrigger, type IconType } from "@aragon/gov-ui-kit";
+import { Icon, type IconType } from "@aragon/gov-ui-kit";
 import { useTranslation } from "next-i18next";
 
 export interface INavLink {
@@ -18,7 +18,7 @@ interface INavLinkProps extends INavLink {
 }
 
 export const NavLink: React.FC<INavLinkProps> = (props) => {
-  const { t } = useTranslation("common");
+  // const { t } = useTranslation("common");
   const { icon, id, name, path, onClick } = props;
   const { pathname, query } = useRouter();
   const pluginId = resolvePluginId(pathname, query);

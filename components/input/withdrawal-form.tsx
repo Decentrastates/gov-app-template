@@ -21,7 +21,7 @@ export const WithdrawalForm: FC<IWithdrawalFormProps> = ({ onChange, onSubmit })
     else if (!value) return;
 
     onChange({ to, value: BigInt(value), data: "" } as unknown as RawAction);
-  }, [to, value]);
+  }, [to, value, onChange]);
 
   const handleTo = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTo(event?.target?.value as Address);

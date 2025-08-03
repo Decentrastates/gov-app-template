@@ -26,7 +26,7 @@ const PluginLoader: FC = () => {
         setPageComponent(() => mod.default);
       })
       .catch((err) => {
-        console.error("Failed to load the page component", err);
+        console.log("Failed to load the page component", err);
 
         setComponentLoading(false);
       });

@@ -1,5 +1,5 @@
-import { Address } from "viem";
-import { ChainName, getChain } from "./utils/chains";
+import { type Address } from "viem";
+import { type ChainName, getChain } from "./utils/chains";
 
 // Contract Addresses
 export const PUB_DAO_ADDRESS = (process.env.NEXT_PUBLIC_DAO_ADDRESS ?? "") as Address;

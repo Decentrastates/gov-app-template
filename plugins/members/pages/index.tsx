@@ -25,7 +25,7 @@ export default function MembersList() {
   const delegateCount = delegates?.length || 0;
   const { members: multisigMembers, isLoading: isLoadingMultisigMembers } = useMultisigMembers();
 
-  const [toggleValue, setToggleValue] = useState<"all" | "verified" | "multisig" | "holders">("all");
+  const [toggleValue, setToggleValue] = useState<"all" | "verified" | "multisig" | "holders">("holders");
   const onToggleChange = (value: string | undefined) => {
     if (value) setToggleValue(value as "all" | "verified");
   };
@@ -77,7 +77,7 @@ export default function MembersList() {
           <aside className="flex w-full flex-col gap-y-4 lg:max-w-[280px] lg:gap-y-6">
             <div className="flex flex-col gap-y-3">
               <Heading size="h3">{t("members.details.title")}</Heading>
-              <If some={[toggleValue === "all", toggleValue === "verified"]}>
+              <If some={[toggleValue === "all", toggleValue === "verified", toggleValue === "holders"]}>
                 <Then>
                   <p className="text-neutral-500">{t("members.details.delegation_description")}</p>
                 </Then>
@@ -97,7 +97,7 @@ export default function MembersList() {
                   </a>
                 </dd>
               </div>
-              <If some={[toggleValue === "all", toggleValue === "verified"]}>
+              <If some={[toggleValue === "all", toggleValue === "verified", toggleValue === "holders"]}>
                 <Then>
                   <div className="flex flex-col items-baseline gap-y-2 py-3 lg:gap-x-6 lg:py-4">
                     <dt className="line-clamp-1 shrink-0 text-lg leading-tight text-neutral-800 lg:line-clamp-6 lg:w-40">

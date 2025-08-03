@@ -1,4 +1,4 @@
-import { RawAction } from "@/utils/types";
+import { type RawAction } from "@/utils/types";
 import { WithdrawalForm } from "@/components/input/withdrawal-form";
 import { FunctionAbiSelectForm } from "@/components/input/function-abi-select-form";
 import {
@@ -11,7 +11,7 @@ import {
 } from "@aragon/gov-ui-kit";
 import { ElseIf, If, Then } from "@/components/if";
 import { useState } from "react";
-import { AbiFunction } from "viem";
+import { type AbiFunction } from "viem";
 import { CalldataForm } from "../input/calldata-form";
 import { ImportActionsForm } from "../input/import-actions-form";
 
@@ -38,7 +38,7 @@ export const NewActionDialog: React.FC<INewActionDialogProps> = (props) => {
   const handleSubmit = () => {
     if (!stagedActions) return;
 
-    onClose(stagedActions, abi || null);
+    onClose(stagedActions, abi ?? null);
     setStagedActions(null);
   };
   const dismiss = () => {

@@ -1,7 +1,7 @@
 import { usePublicClient } from "wagmi";
 import { MultisigPluginAbi } from "@/plugins/members/artifacts/MultisigPlugin.sol";
 import { PUB_MULTISIG_PLUGIN_ADDRESS } from "@/constants";
-import { Address, PublicClient, getAbiItem } from "viem";
+import { type Address, type PublicClient, getAbiItem } from "viem";
 import { useEffect, useState } from "react";
 
 const MembersAddedEvent = getAbiItem({
@@ -94,26 +94,22 @@ async function fetchAddedMembers(publicClient: PublicClient): Promise<MemberAddR
  * @returns 返回包含区块号和移除成员地址的数组
  * @throws 当日志为空时抛出错误
  */
-function fetchRemovedMembers(publicClient: PublicClient): Promise<MemberAddRemoveItem[]> {
-  return publicClient
-    .getLogs({
-      address: PUB_MULTISIG_PLUGIN_ADDRESS,
-      event: MembersRemovedEvent,
-      // args: {},
-      fromBlock: BigInt(0),
-      toBlock: "latest",
-    })
-    .then((logs) => {
-      if (!logs) throw new Error("Empty response");
-
-      return logs.map((item) => {
-        return {
-          blockNumber: item.blockNumber,
-          added: [],
-          removed: item.args.members || ([] as any),
-        };
-      });
-    });
+async function fetchRemovedMembers(publicClient: PublicClient): Promise<MemberAddRemoveItem[]> {
+  const logs = await publicClient.getLogs({
+    address: PUB_MULTISIG_PLUGIN_ADDRESS,
+    event: MembersRemovedEvent,
+    // args: {},
+    fromBlock: BigInt(0),
+    toBlock: "latest",
+  });
+  if (!logs) throw new Error("Empty response");
+  return logs.map((item) => {
+    return {
+      blockNumber: item.blockNumber,
+      added: [],
+      removed: item.args.members || ([] as any),
+    };
+  });
 }
 
 type MemberAddRemoveItem = {

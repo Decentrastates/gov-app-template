@@ -11,6 +11,7 @@ import { ADDRESS_ZERO } from "@/utils/evm";
 import { useTokenVotes } from "@/hooks/useTokenVotes";
 import { AddressText } from "@/components/text/address";
 import { Address } from "viem";
+import { useTranslation } from "next-i18next";
 
 const DEFAULT_PAGE_SIZE = 6;
 
@@ -18,6 +19,7 @@ export default function Proposals() {
   const { address } = useAccount();
   const { data: blockNumber } = useBlockNumber({ watch: true });
   const { balance, delegatesTo } = useTokenVotes(address);
+  const { t } = useTranslation();
 
   const {
     data: proposalCountResponse,
@@ -37,7 +39,7 @@ export default function Proposals() {
     refetch();
   }, [blockNumber]);
 
-  const entityLabel = proposalCount === 1 ? "Proposal" : "Proposals";
+  const entityLabel = t("transactions.proposal", { count: proposalCount });
 
   let dataListState: DataListState = "idle";
   if (isLoading && !proposalCount) {
@@ -56,7 +58,7 @@ export default function Proposals() {
     <MainSection>
       <div className="flex w-full flex-row content-center justify-between">
         <h1 className="line-clamp-1 flex flex-1 shrink-0 text-2xl font-normal leading-tight text-neutral-800 md:text-3xl">
-          交易列表
+          {t("transactions.pageTitle")}
         </h1>
       </div>
       <If true={hasBalance && (delegatingToSomeoneElse || delegatedToZero)}>
@@ -65,6 +67,7 @@ export default function Proposals() {
           delegatesTo={delegatesTo}
           delegatedToZero={delegatedToZero}
           address={address}
+          t={t}
         />
       </If>
       <If true={proposalCount}>
@@ -85,9 +88,9 @@ export default function Proposals() {
         </Then>
         <Else>
           <MissingContentView>
-            No proposals have been created yet.
+            {t("transactions.noProposalsCreated")}
             <br />
-            Here you will see the list of proposals initiated by the Security Council.
+            {t("transactions.proposalsListDescription")}
           </MissingContentView>
         </Else>
       </If>
@@ -100,19 +103,16 @@ const NoVetoPowerWarning = ({
   delegatesTo,
   delegatedToZero,
   address,
+  t,
 }: {
   delegatingToSomeoneElse: boolean;
   delegatesTo: Address | undefined;
   delegatedToZero: boolean;
   address: Address | undefined;
+  t: (key: string) => string;
 }) => {
   return (
-    <AlertCard
-      message={
-        delegatingToSomeoneElse ? "Your voting power is currently delegated" : "You cannot veto on new proposals"
-      }
-      variant="info"
-    >
+    <AlertCard message={delegatingToSomeoneElse ? t("votingPowerDelegated") : t("cannotVetoProposals")} variant="info">
       {
         <span className="text-sm">
           <If true={delegatingToSomeoneElse}>

@@ -8,6 +8,7 @@ import "@/pages/globals.css";
 import { PUB_APP_NAME } from "@/constants";
 import Head from "next/head";
 import { appWithTranslation } from "next-i18next";
+import "@/utils/i18n";
 
 const manrope = Manrope({
   subsets: ["latin"],

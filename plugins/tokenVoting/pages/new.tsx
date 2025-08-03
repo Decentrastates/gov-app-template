@@ -8,6 +8,7 @@ import { useAccount } from "wagmi";
 import { useCanCreateProposal } from "../hooks/useCanCreateProposal";
 import { MissingContentView } from "@/components/MissingContentView";
 import { useAppKit } from "@reown/appkit/react";
+import { useTranslation } from "next-i18next";
 
 import { Address } from "viem";
 import { NewActionDialog, NewActionType } from "@/components/dialogs/NewActionDialog";
@@ -19,6 +20,7 @@ import { encodeActionsAsJson } from "@/utils/json-actions";
 export default function Create() {
   const { address: selfAddress, isConnected } = useAccount();
   const canCreate = useCanCreateProposal();
+  const { t } = useTranslation("common");
   const [addActionType, setAddActionType] = useState<NewActionType>("");
   const {
     title,
@@ -78,16 +80,16 @@ export default function Create() {
     <MainSection narrow>
       <div className="w-full justify-between">
         <h1 className="mb-8 line-clamp-1 flex flex-1 shrink-0 text-2xl font-normal leading-tight text-neutral-800 md:text-3xl">
-          Create Proposal
+          {t("tokenVoting.newProposal.title")}
         </h1>
 
         <PlaceHolderOr selfAddress={selfAddress} canCreate={canCreate} isConnected={isConnected}>
           <div className="mb-6">
             <InputText
               className=""
-              label="Title"
+              label={t("tokenVoting.newProposal.titleLabel")}
               maxLength={100}
-              placeholder="A short title that describes the main purpose"
+              placeholder={t("tokenVoting.newProposal.titlePlaceholder")}
               variant="default"
               value={title}
               readOnly={isCreating}
@@ -97,9 +99,9 @@ export default function Create() {
           <div className="mb-6">
             <InputText
               className=""
-              label="Summary"
+              label={t("tokenVoting.newProposal.summaryLabel")}
               maxLength={280}
-              placeholder="A short summary that outlines the main purpose of the proposal"
+              placeholder={t("tokenVoting.newProposal.summaryPlaceholder")}
               variant="default"
               value={summary}
               readOnly={isCreating}
@@ -108,28 +110,30 @@ export default function Create() {
           </div>
           <div className="mb-6">
             <TextAreaRichText
-              label="Body"
+              label={t("tokenVoting.newProposal.bodyLabel")}
               className="pt-2"
               value={description}
               onChange={setDescription}
-              placeholder="A description of what the proposal is all about"
+              placeholder={t("tokenVoting.newProposal.bodyPlaceholder")}
             />
           </div>
 
           <div className="mb-6 flex flex-col gap-y-2 md:gap-y-3">
             <div className="flex flex-col gap-0.5 md:gap-1">
               <div className="flex gap-x-3">
-                <p className="text-base font-normal leading-tight text-neutral-800 md:text-lg">Resources</p>
-                <Tag label="Optional" />
+                <p className="text-base font-normal leading-tight text-neutral-800 md:text-lg">
+                  {t("tokenVoting.newProposal.resources")}
+                </p>
+                <Tag label={t("tokenVoting.newProposal.optional")} />
               </div>
               <p className="text-sm font-normal leading-normal text-neutral-500 md:text-base">
-                Add links to external resources
+                {t("tokenVoting.newProposal.addResourcesDescription")}
               </p>
             </div>
             <div className="flex flex-col gap-y-4 rounded-xl border border-neutral-100 bg-neutral-0 p-4">
               <If lengthOf={resources} is={0}>
                 <p className="text-sm font-normal leading-normal text-neutral-500 md:text-base">
-                  There are no resources yet. Click the button below to add the first one.
+                  {t("tokenVoting.newProposal.noResourcesYet")}
                 </p>
               </If>
               {resources.map((resource, idx) => {
@@ -137,11 +141,11 @@ export default function Create() {
                   <div key={idx} className="flex flex-col gap-y-3 py-3 md:py-4">
                     <div className="flex items-end gap-x-3">
                       <InputText
-                        label="Resource name"
+                        label={t("tokenVoting.newProposal.resourceNameLabel")}
                         readOnly={isCreating}
                         value={resource.name}
                         onChange={(e) => onResourceNameChange(e, idx)}
-                        placeholder="GitHub, Twitter, etc."
+                        placeholder={t("tokenVoting.newProposal.resourceNamePlaceholder")}
                       />
                       <Button
                         size="lg"
@@ -151,10 +155,10 @@ export default function Create() {
                       />
                     </div>
                     <InputText
-                      label="URL"
+                      label={t("tokenVoting.newProposal.urlLabel")}
                       value={resource.url}
                       onChange={(e) => onResourceUrlChange(e, idx)}
-                      placeholder="https://..."
+                      placeholder={t("tokenVoting.newProposal.urlPlaceholder")}
                       readOnly={isCreating}
                     />
                   </div>
@@ -171,7 +175,7 @@ export default function Create() {
                   setResources(resources.concat({ url: "", name: "" }));
                 }}
               >
-                Add resource
+                {t("tokenVoting.newProposal.addResourceButton")}
               </Button>
             </span>
           </div>
@@ -180,7 +184,7 @@ export default function Create() {
 
           <ProposalActions
             actions={actions}
-            emptyListDescription="The proposal has no actions defined yet. Select a type of action to add to the proposal."
+            emptyListDescription={t("tokenVoting.newProposal.noActionsDefined")}
             onRemove={(idx) => onRemoveAction(idx)}
           />
 
@@ -192,31 +196,31 @@ export default function Create() {
               variant="tertiary"
               onClick={() => exportAsJson()}
             >
-              Export actions as JSON
+              {t("tokenVoting.newProposal.exportActionsAsJson")}
             </Button>
           </If>
 
           <div className="mt-8 grid w-full grid-cols-2 gap-4 md:grid-cols-4">
             <AddActionCard
-              title="Add a payment"
+              title={t("tokenVoting.newProposal.addPayment")}
               icon={IconType.WITHDRAW}
               disabled={isCreating}
               onClick={() => setAddActionType("withdrawal")}
             />
             <AddActionCard
-              title="Add a function call"
+              title={t("tokenVoting.newProposal.addFunctionCall")}
               icon={IconType.BLOCKCHAIN_BLOCKCHAIN}
               disabled={isCreating}
               onClick={() => setAddActionType("select-abi-function")}
             />
             <AddActionCard
-              title="Add raw calldata"
+              title={t("tokenVoting.newProposal.addRawCalldata")}
               icon={IconType.COPY}
               disabled={isCreating}
               onClick={() => setAddActionType("calldata")}
             />
             <AddActionCard
-              title="Import JSON actions"
+              title={t("tokenVoting.newProposal.importJsonActions")}
               disabled={isCreating}
               icon={IconType.RICHTEXT_LIST_UNORDERED}
               onClick={() => setAddActionType("import-json")}
@@ -241,8 +245,8 @@ export default function Create() {
               onClick={() => submitProposal()}
             >
               <If lengthOf={actions} above={0}>
-                <Then>Submit proposal</Then>
-                <Else>Submit signaling proposal</Else>
+                <Then>{t("tokenVoting.newProposal.submitProposal")}</Then>
+                <Else>{t("tokenVoting.newProposal.submitSignalingProposal")}</Else>
               </If>
             </Button>
           </div>
@@ -263,20 +267,19 @@ const PlaceHolderOr = ({
   canCreate: boolean | undefined;
   children: ReactNode;
 }) => {
+  const { t } = useTranslation("common");
   const { open } = useAppKit();
   return (
     <If true={!selfAddress || !isConnected}>
       <Then>
         {/* Not connected */}
-        <MissingContentView callToAction="Connect wallet" onClick={() => open()}>
-          Please connect your wallet to continue.
+        <MissingContentView callToAction={t("tokenVoting.newProposal.connectWallet")} onClick={() => open()}>
+          {t("tokenVoting.newProposal.pleaseConnectWallet")}
         </MissingContentView>
       </Then>
       <ElseIf true={!canCreate}>
         {/* Not a member */}
-        <MissingContentView>
-          You cannot create proposals on the multisig because you are not currently defined as a member.
-        </MissingContentView>
+        <MissingContentView>{t("tokenVoting.newProposal.cannotCreateProposal")}</MissingContentView>
       </ElseIf>
       <Else>{children}</Else>
     </If>

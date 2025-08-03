@@ -1,5 +1,5 @@
 import { type FC, useState } from "react";
-import { AbiFunction, toFunctionSignature, type Address, type Hex } from "viem";
+import { toFunctionSignature, type AbiFunction, type Address, type Hex } from "viem";
 import { AlertInline, InputContainer, InputText } from "@aragon/gov-ui-kit";
 import { PleaseWaitSpinner } from "@/components/please-wait";
 import { isAddress } from "@/utils/evm";
@@ -9,7 +9,6 @@ import { useAbi } from "@/hooks/useAbi";
 import { FunctionParamsForm } from "./function-params-form";
 import { AddressText } from "../text/address";
 import { decodeCamelCase } from "@/utils/case";
-
 interface FunctionAbiSelectFormProps {
   onChange: (action: RawAction, abi: AbiFunction) => any;
   onActionCleared: () => any;

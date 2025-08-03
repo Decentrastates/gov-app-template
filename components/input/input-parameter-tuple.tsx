@@ -39,7 +39,7 @@ export const InputParameterTuple = ({ abi, idx, onChange, hideTitle }: IInputPar
     onChange(idx, result);
   };
 
-  const components: AbiParameter[] = (abi as any).components || [];
+  const components: AbiParameter[] = (abi as any).components ?? [];
   const someMissingName = components.some((c) => !c.name);
 
   return (

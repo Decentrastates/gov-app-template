@@ -1,7 +1,7 @@
 import { PUB_ALCHEMY_API_KEY, PUB_CHAIN } from "@/constants";
 import { formatHexString } from "@/utils/evm";
 import { MemberAvatar } from "@aragon/gov-ui-kit";
-import { useDisconnect, useAppKit, useAppKitNetwork } from "@reown/appkit/react";
+import { useAppKit } from "@reown/appkit/react";
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
 import { useEffect } from "react";

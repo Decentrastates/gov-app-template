@@ -1,5 +1,4 @@
-import { Dialog, DialogHeader, type IDialogRootProps } from "@aragon/gov-ui-kit";
-import Link from "next/link";
+import { Dialog, type IDialogRootProps } from "@aragon/gov-ui-kit";
 import { NavLink, type INavLink } from "./navLink";
 
 interface IMobileNavDialogProps extends IDialogRootProps {

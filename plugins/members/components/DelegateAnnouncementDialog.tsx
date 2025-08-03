@@ -22,6 +22,7 @@ import { useRouter } from "next/router";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { useAccount } from "wagmi";
 import { z } from "zod";
+import { useTranslation } from "next-i18next";
 
 const DELEGATE_RESOURCES = "resources";
 
@@ -29,31 +30,6 @@ const UrlRegex = new RegExp(URL_PATTERN);
 const EmailRegex = new RegExp(EMAIL_PATTERN);
 const UrlWithProtocolRegex = new RegExp(URL_WITH_PROTOCOL_PATTERN);
 const EmptyParagraphRegex = new RegExp(/^(?!<p><\/p>$).*/i);
-
-const ResourceSchema = z
-  .object({
-    name: z.string().optional(),
-    link: z
-      .string()
-      .optional()
-      .refine((val) => !val || UrlRegex.test(val) || z.string().email().safeParse(val).success, {
-        message: "Invalid resource link",
-      }),
-  })
-  .refine(
-    (data) => (data.name && data.link) || (!data.name && !data.link),
-    (data) => ({
-      message: `A ${data.name ? "Link" : "Name"} is required`,
-      path: data.name ? ["link"] : ["name"],
-    })
-  );
-
-const MetadataSchema = z.object({
-  identifier: z.string().min(1, { message: "Identifier is required" }),
-  bio: z.string().min(1, { message: "A short bio is required" }),
-  message: z.string().regex(EmptyParagraphRegex, { message: "Delegation statement is required" }),
-  resources: z.array(ResourceSchema).optional(),
-});
 
 interface IDelegateAnnouncementDialogProps extends IDialogRootProps {
   onClose: () => void;
@@ -63,6 +39,35 @@ export const DelegateAnnouncementDialog: React.FC<IDelegateAnnouncementDialogPro
   const { onClose, ...otherProps } = props;
   const router = useRouter();
   const { address } = useAccount();
+  const { t } = useTranslation("common");
+
+  const ResourceSchema = z
+    .object({
+      name: z.string().optional(),
+      link: z
+        .string()
+        .optional()
+        .refine((val) => !val || UrlRegex.test(val) || z.string().email().safeParse(val).success, {
+          message: t("delegate.invalidResourceLink"),
+        }),
+    })
+    .refine(
+      (data) =>
+        // 同时存在（非空字符串）或同时不存在
+        (!!data.name && !!data.link) || (!data.name && !data.link),
+      (data) => ({
+        message: data.name ? t("delegate.linkRequired") : t("delegate.nameRequired"),
+        path: data.name ? ["link"] : ["name"],
+      })
+    );
+
+  const MetadataSchema = z.object({
+    identifier: z.string().min(1, { message: t("delegate.identifierRequired") }),
+    bio: z.string().min(1, { message: t("delegate.bioRequired") }),
+    message: z.string().regex(EmptyParagraphRegex, { message: t("delegate.messageRequired") }),
+    resources: z.array(ResourceSchema).optional(),
+  });
+
   const {
     control,
     getValues,
@@ -99,20 +104,20 @@ export const DelegateAnnouncementDialog: React.FC<IDelegateAnnouncementDialogPro
   };
 
   const ctaLabel = isConfirming
-    ? "Creating profile"
+    ? t("delegate.creatingProfile")
     : status === "pending"
-      ? "Waiting for confirmation"
-      : "Create profile";
+      ? t("delegate.waitingForConfirmation")
+      : t("delegate.createProfile");
 
-  console.log(otherProps, "props", props);
+  // console.log(otherProps, "props", props);
   return (
     <DialogRoot {...otherProps} containerClassName="!max-w-[520px] !z-[9999]" useFocusTrap={false}>
-      <DialogHeader title="Create your delegate profile" onClose={onClose} />
+      <DialogHeader title={t("delegate.createProfileTitle")} onClose={onClose} />
       <DialogContent className="flex flex-col gap-y-4 md:gap-y-6">
         <InputText
-          label="Identifier"
+          label={t("delegate.identifierLabel")}
           readOnly={isConfirming}
-          placeholder="Your name or alias"
+          placeholder={t("delegate.identifierPlaceholder")}
           maxLength={50}
           {...register("identifier")}
           {...(errors.identifier?.message
@@ -120,8 +125,8 @@ export const DelegateAnnouncementDialog: React.FC<IDelegateAnnouncementDialogPro
             : {})}
         />
         <TextArea
-          placeholder="Brief description about you and your relevant experiences"
-          label="Bio"
+          placeholder={t("delegate.bioPlaceholder")}
+          label={t("delegate.bioLabel")}
           {...register("bio")}
           maxLength={400}
           readOnly={isConfirming}
@@ -132,8 +137,8 @@ export const DelegateAnnouncementDialog: React.FC<IDelegateAnnouncementDialogPro
           control={control}
           render={({ field }) => (
             <TextAreaRichText
-              placeholder="A statement detailing what you bring to the DAO and why you should be delegated to"
-              label="Delegation statement"
+              placeholder={t("delegate.messagePlaceholder")}
+              label={t("delegate.messageLabel")}
               onChange={field.onChange}
               value={field.value}
               onBlur={field.onBlur}
@@ -145,11 +150,13 @@ export const DelegateAnnouncementDialog: React.FC<IDelegateAnnouncementDialogPro
         <div className="flex flex-col gap-y-2 md:gap-y-3">
           <div className="flex flex-col gap-0.5 md:gap-1">
             <div className="flex gap-x-3">
-              <p className="text-base font-normal leading-tight text-neutral-800 md:text-lg">Resources</p>
-              <Tag label={"Optional"} />
+              <p className="text-base font-normal leading-tight text-neutral-800 md:text-lg">
+                {t("delegate.resourcesTitle")}
+              </p>
+              <Tag label={t("delegate.optional")} />
             </div>
             <p className="text-sm font-normal leading-normal text-neutral-500 md:text-base">
-              Add links to external resources here
+              {t("delegate.resourcesDescription")}
             </p>
           </div>
           <If lengthOf={fields} above={0}>
@@ -161,9 +168,9 @@ export const DelegateAnnouncementDialog: React.FC<IDelegateAnnouncementDialogPro
                   <div key={field.id} className="flex flex-col gap-y-3 py-3 md:py-4">
                     <div className="flex items-end gap-x-3">
                       <InputText
-                        label="Body"
+                        label={t("delegate.resourceNameLabel")}
                         readOnly={isConfirming}
-                        placeholder="GitHub, Twitter, etc."
+                        placeholder={t("delegate.resourceNamePlaceholder")}
                         {...register(`${DELEGATE_RESOURCES}.${index}.name` as const)}
                         {...(nameError?.message ? { alert: { variant: "critical", message: nameError.message } } : {})}
                       />
@@ -177,14 +184,14 @@ export const DelegateAnnouncementDialog: React.FC<IDelegateAnnouncementDialogPro
                               remove(index);
                             }}
                           >
-                            Remove link
+                            {t("delegate.removeLink")}
                           </Dropdown.Item>
                         </Dropdown.Container>
                       </If>
                     </div>
                     <InputText
-                      label="Link"
-                      placeholder="https://..."
+                      label={t("delegate.resourceLinkLabel")}
+                      placeholder={t("delegate.resourceLinkPlaceholder")}
                       readOnly={isConfirming}
                       {...register(`${DELEGATE_RESOURCES}.${index}.link` as const)}
                       onBlur={(e) => {
@@ -207,13 +214,13 @@ export const DelegateAnnouncementDialog: React.FC<IDelegateAnnouncementDialogPro
                 append({ link: "", name: "" });
               }}
             >
-              Add resource
+              {t("delegate.addResource")}
             </Button>
           </span>
         </div>
         <div className="mt-4 flex justify-between">
           <Button variant="secondary" size="lg" onClick={onClose} disabled={isConfirming || status === "pending"}>
-            Cancel
+            {t("delegate.cancel")}
           </Button>
           <Button
             variant="primary"

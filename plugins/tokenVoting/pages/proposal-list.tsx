@@ -37,7 +37,7 @@ export default function Proposals() {
     refetch();
   }, [blockNumber]);
 
-  const entityLabel = proposalCount === 1 ? "Proposal" : "Proposals";
+  const entityLabel = proposalCount === 1 ? t("tokenVoting.proposal") : t("tokenVoting.proposals");
 
   let dataListState: DataListState = "idle";
   if (isLoading && !proposalCount) {
@@ -52,13 +52,13 @@ export default function Proposals() {
     <MainSection>
       <SectionView>
         <h1 className="line-clamp-1 flex flex-1 shrink-0 text-2xl font-normal leading-tight text-neutral-800 md:text-3xl">
-          {t("token-voting.proposals")}
+          {t("tokenVoting.proposals")}
         </h1>
         <div className="justify-self-end">
           <If true={isConnected && canCreate}>
             <Link href="#/new">
               <Button iconLeft={IconType.PLUS} size="md" variant="primary">
-                Submit Proposal
+                {t("tokenVoting.submit-proposal")}
               </Button>
             </Link>
           </If>
@@ -68,8 +68,7 @@ export default function Proposals() {
       <If not={proposalCount}>
         <Then>
           <MissingContentView>
-            No proposals have been created yet. Here you will see the available proposals.{" "}
-            <If true={canCreate}>Create your first proposal.</If>
+            {t("tokenVoting.no-proposals")} <If true={canCreate}>{t("tokenVoting.create-first-proposal")}</If>
           </MissingContentView>
         </Then>
         <Else>

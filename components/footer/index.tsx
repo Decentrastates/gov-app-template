@@ -1,5 +1,5 @@
 import { PUB_APP_NAME, PUB_BLOG_URL, PUB_FORUM_URL, PUB_PROJECT_URL } from "@/constants";
-import Image from "next/image";
+// import Image from "next/image";
 
 export const Footer = () => {
   return (

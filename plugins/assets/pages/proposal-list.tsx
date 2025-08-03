@@ -10,7 +10,7 @@ import { MissingContentView } from "@/components/MissingContentView";
 import { ADDRESS_ZERO } from "@/utils/evm";
 import { useTokenVotes } from "@/hooks/useTokenVotes";
 import { AddressText } from "@/components/text/address";
-import { Address } from "viem";
+import { type Address } from "viem";
 
 const DEFAULT_PAGE_SIZE = 6;
 
@@ -32,6 +32,7 @@ export default function Proposals() {
     chainId: PUB_CHAIN.id,
   });
   const proposalCount = Number(proposalCountResponse);
+  console.log("isFetchingNextPage", isFetchingNextPage);
 
   useEffect(() => {
     refetch();

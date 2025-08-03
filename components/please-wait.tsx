@@ -1,7 +1,7 @@
 import { Spinner } from "@aragon/gov-ui-kit";
 
 export const PleaseWaitSpinner = ({ status = "Loading", fullMessage }: { status?: string; fullMessage?: string }) => {
-  const message = fullMessage ? fullMessage : `${status}, please wait...`;
+  const message = fullMessage ?? `${status}, please wait...`;
 
   return (
     <div>

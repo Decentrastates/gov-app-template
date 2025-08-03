@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { type Hex, encodeFunctionData, parseEther } from "viem";
 import { AlertInline, InputNumber } from "@aragon/gov-ui-kit";
-import { type AbiFunction } from "abitype";
+import type { AbiFunction } from "abitype";
 import { If } from "@/components/if";
 import { InputParameter } from "./input-parameter";
 import { type InputValue } from "@/utils/input-values";
@@ -64,14 +64,14 @@ export const FunctionParamsForm = ({
       });
       onActionChanged(data, BigInt(value ?? "0"), functionAbi);
     } catch (err) {
-      console.error("Invalid parameters", err);
+      // Handle invalid parameters silently
       onActionCleared();
     }
   };
 
   return (
     <div className="w-full rounded-r-lg pt-4">
-      <If true={functionAbi?.inputs.length || 0 > 0}>
+      <If true={(functionAbi?.inputs.length ?? 0) > 0}>
         <div className="flex flex-row items-center justify-between border-b border-neutral-200 pb-4">
           <p className="text-md font-semibold text-neutral-800">Parameters</p>
         </div>

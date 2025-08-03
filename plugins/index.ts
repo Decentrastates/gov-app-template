@@ -63,13 +63,13 @@ export const plugins: PluginItem[] = [
   //   // icon: IconType.BLOCKCHAIN_BLOCKCHAIN,
   //   pluginAddress: PUB_OPT_MULTISIG_PLUGIN_ADDRESS,
   // },
-  // {
-  //   id: "emergency",
-  //   folderName: "emergency-multisig",
-  //   title: "plugins.emergency",
-  //   // icon: IconType.BLOCKCHAIN_BLOCKCHAIN,
-  //   pluginAddress: PUB_EMERGENCY_MULTISIG_PLUGIN_ADDRESS,
-  // },
+  {
+    id: "emergency",
+    folderName: "emergency-multisig",
+    title: "plugins.emergency",
+    // icon: IconType.BLOCKCHAIN_BLOCKCHAIN,
+    pluginAddress: PUB_EMERGENCY_MULTISIG_PLUGIN_ADDRESS,
+  },
   {
     id: "assets",
     folderName: "assets",
@@ -91,11 +91,11 @@ export const plugins: PluginItem[] = [
     // icon: IconType.BLOCKCHAIN_BLOCKCHAIN,
     pluginAddress: PUB_DELEGATION_WALL_CONTRACT_ADDRESS,
   },
-  // {
-  //   id: "settings",
-  //   folderName: "settings",
-  //   title: "plugins.settings",
-  //   // icon: IconType.BLOCKCHAIN_BLOCKCHAIN,
-  //   pluginAddress: PUB_DELEGATION_WALL_CONTRACT_ADDRESS,
-  // },
+  {
+    id: "settings",
+    folderName: "settings",
+    title: "plugins.settings",
+    // icon: IconType.BLOCKCHAIN_BLOCKCHAIN,
+    pluginAddress: PUB_DELEGATION_WALL_CONTRACT_ADDRESS,
+  },
 ];
