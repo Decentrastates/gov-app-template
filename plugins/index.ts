@@ -6,6 +6,7 @@ import {
   PUB_TOKEN_VOTING_PLUGIN_ADDRESS,
   PUB_LOCK_TO_VOTE_PLUGIN_ADDRESS,
   PUB_OPT_MULTISIG_PLUGIN_ADDRESS,
+  PUB_TOKEN_SALE_PLUGIN_ADDRESS,
 } from "@/constants";
 import { IconType } from "@aragon/gov-ui-kit";
 
@@ -34,6 +35,13 @@ export const plugins: PluginItem[] = [
     title: "plugins.token_voting",
     // icon: IconType.BLOCKCHAIN_BLOCKCHAIN,
     pluginAddress: PUB_TOKEN_VOTING_PLUGIN_ADDRESS,
+  },
+  {
+    id: "token-ico",
+    folderName: "tokenICO",
+    title: "plugins.token_ico",
+    // icon: IconType.BLOCKCHAIN_TOKEN,
+    pluginAddress: PUB_TOKEN_SALE_PLUGIN_ADDRESS,
   },
   // {
   //   id: "lock-to-vote",

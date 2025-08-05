@@ -17,7 +17,8 @@
     "members": "Members",
     "assets": "Assets",
     "transactions": "Transactions",
-    "settings": "Settings"
+    "settings": "Settings",
+    "token-ico": "Token ICO"
   },
   "members": {
     "holders": {
